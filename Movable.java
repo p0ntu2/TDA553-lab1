@@ -1,9 +1,7 @@
-//import org.ietf.jgss.GSSContext;
+public interface Movable {
+    public void move();
 
-interface MovableInterface{
-    void move();
-    void turnLeft();
-    void turnRight();
+    public void turnLeft();
+
+    public void turnRight();
 }
-
-// public class Movable() {}
