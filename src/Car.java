@@ -13,13 +13,16 @@ public abstract class Car implements Movable {
     private double y;
     public boolean turnLeft, turnRight;
 
-    public Car(int nrDoors, double enginePower, Color color, String modelName, double x, double y) {
+    public Car(int nrDoors, double enginePower, double speed, Color color, String modelName, double x, double y, boolean left, boolean right) {
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
+        this.currentSpeed = speed;
         this.color = color;
         this.modelName = modelName;
         this.x = x;
         this.y = y;
+        this.turnLeft = left;
+        this.turnRight = right;
     }
 
     public int getNrDoors() {

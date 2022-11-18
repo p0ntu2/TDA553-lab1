@@ -5,8 +5,8 @@ public class Volvo240 extends Car {
 
     private final static double trimFactor = 1.25;
     
-    public Volvo240(int nrDoors, double enginePower, Color color, String modelName, double x, double y){
-        super(nrDoors, enginePower, color, modelName, x, y);
+    public Volvo240(int nrDoors, double enginePower, double speed, Color color, String modelName, double x, double y, boolean left, boolean right){
+        super(nrDoors, enginePower, speed, color, modelName, x, y, left, right);
         stopEngine();
     }
     
