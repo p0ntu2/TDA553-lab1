@@ -1,16 +1,17 @@
 import java.awt.*;
 
 interface CarInterface{ 
-    public void setCurrentSpeed();
+    public void setCurrentSpeed(double amount);
     public double getCurrentSpeed();
     public Color getColor();
-    public void setColor();
+    public void setColor(Color clr);
+    public double speedFactor(double trimFactor);
     public void startEngine();
     public void stopEngine();
-    public void incrementSpeed();
-    public void decrementSpeed();
-    public void gas();
-    public void brake(); 
+    public void incrementSpeed(double amount, double currentSpeed, double trimFactor);
+    public void decrementSpeed(double amount, double currentSpeed);
+    public void gas(double amount);
+    public void brake(double amount); 
 }
 
 public abstract class Car implements CarInterface, MovableInterface{
@@ -92,11 +93,11 @@ public abstract class Car implements CarInterface, MovableInterface{
 
     // TODO fix this method according to lab pm
         public void gas(double amount){
-        incrementSpeed(amount);
+        incrementSpeed(amount, amount, amount);
         }
 
     // TODO fix this method according to lab pm
         public void brake(double amount){
-        decrementSpeed(amount);
+        decrementSpeed(amount, amount);
         }
 } 
