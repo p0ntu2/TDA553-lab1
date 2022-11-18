@@ -1,105 +1,142 @@
 
+
 import java.awt.*;
 
-interface CarInterface{ 
-    public void setCurrentSpeed();
-    public double getCurrentSpeed();
-    // public void getColor();
-    public void setColor();
-    public void startEngine();
-    public void stopEngine();
-    public void incrementSpeed();
-    public void decrementSpeed();
-    public void gas();
-    public void brake();
-    public void Moveble(); 
-}
 
-public abstract class Car implements CarInterface{
 
-    public int nrDoors; // Number of doors on the car
-    public double enginePower; // Engine power of the car
-    public double currentSpeed; // The current speed of the car
-    public Color color; // Color of the car
-    public String modelName; // The car model name
-    public double x; // x position
-    public double y; // y position
+public abstract class Car implements Movable {
+    private int nrDoors; // Number of doors on the car
+    private double enginePower; // Engine power of the car
+    private double currentSpeed; // The current speed of the car
+    private Color color; // Color of the car
+    private String modelName; // The car model name
+    private double x;
+    private double y;
+    private boolean turnLeft, turnRight;
 
-        
-        public void setCurrentSpeed(double amount) {
-            currentSpeed = amount;
-        }
+    public Car(int doors, double power, double speed, Color caColor, String name, double x, double y, boolean left,
+            boolean right) {
+        this.nrDoors = doors;
+        this.enginePower = power;
+        this.currentSpeed = speed;
+        this.color = caColor;
+        this.modelName = name;
+        this.x = x;
+        this.y = y;
+        this.turnLeft = left;
+        this.turnRight = right;
+    }
 
-        public double getCurrentSpeed(){
-            return currentSpeed;
-        }
+    public int getNrDoors() {
+        return this.nrDoors;
+    }
 
-        public Color getColor() {
-            return color;
-        }
-        
-        public void setColor(Color clr) {
-            color = clr;
-        }
+    public double getEnginePower() {
+        return this.enginePower;
+    }
 
-        public void startEngine() {
-            currentSpeed = 0.1;
-        }
-        
-        public void stopEngine() {
-            currentSpeed = 0;
-        }
-        
-        public double speedFactor(double trimFactor){
-            return enginePower * 0.01 * trimFactor;
-        }
-    
-        public void incrementSpeed(double amount, double currentSpeed, double trimFactor){
-            currentSpeed = Math.min(getCurrentSpeed() + speedFactor(trimFactor) * amount,enginePower);
-        }
-    
-        public void decrementSpeed(double amount, double speedFactor){
-            currentSpeed = Math.max(getCurrentSpeed() - speedFactor(speedFactor) * amount,0);
-        }
+    public double getCurrentSpeed() {
+        return this.currentSpeed;
+    }
 
-        public double getX(){
-            return x;
-        }
+    public void setCurrentSpeed(double ammount) {
+        this.currentSpeed = ammount;
+    }
 
-        public void setX(double amount){
-            x = amount;
-        }
+    public String getName(){
+        return this.modelName;
+    }
 
-        public double getY(){
-            return y;
-        }
+    public Color getColor() {
+        return this.color;
+    }
 
-        public void setY(double amount){
-            y = amount;
-        }
+    public void setColor(Color clr) {
+        this.color = clr;
+    }
 
-        public void move(){
-            x =+ this.currentSpeed;
-            y =+ this.currentSpeed;
+    public void startEngine() {
+        this.currentSpeed = 0.1;
+    }
+
+    public void stopEngine() {
+        this.currentSpeed = 0;
+    }
+
+    public double getX() {
+        return this.x;
+    }
+
+    public double getY() {
+        return this.y;
+    }
+
+    public void setX(double ammount) {
+        this.x += ammount;
+    }
+
+    public void setY(double ammount) {
+        this.y += ammount;
+    }
+
+    public void turnLeft() {
+        this.turnRight = false;
+        this.turnLeft = true;
+    }
+
+    public void turnRight() {
+        this.turnLeft = false;
+        this.turnRight = false;
+    }
+
+    public void move() {
+        if (this.turnLeft == true) {
+            setX(-getCurrentSpeed());
+            setY(getCurrentSpeed());
+
+        } else if (this.turnRight == true) {
+            setX(getCurrentSpeed());
+            setY(getCurrentSpeed());
+        } else {
+            setY(getCurrentSpeed());
         }
-    
-        public void turnLeft(){
-            this.x =- this.currentSpeed;
+    }
+
+    public void gas(double amount) {
+        try {
+            if (amount <= 0 || amount >= 1) {
+                throw new Exception();
+            } else {
+                incrementSpeed(amount);
+            }
+
+        } catch (Exception e) {
+            System.out.println("impossible amount");
         }
-    
-        public void turnRight(){
-            this.x =+ this.currentSpeed;
-        }
+    }
 
     // TODO fix this method according to lab pm
-        public void gas(double amount){
-        incrementSpeed(amount);
+    public void brake(double amount) {
+        try {
+            if (amount <= 0 || amount >= 1) {
+                throw new Exception();
+            } else {
+                decrementSpeed(amount);
+
+            }
+        } catch (Exception e) {
+            System.out.println("impossible amount");
+
         }
+    }
+
+
+    abstract double speedFactor();
+
+    abstract void incrementSpeed(double amount);
+
+    abstract void decrementSpeed(double amount);
 
     // TODO fix this method according to lab pm
-        public void brake(double amount){
-        decrementSpeed(amount);
-        
 
-         }
 }
