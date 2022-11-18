@@ -8,7 +8,7 @@ public class Saab95 extends Car{
         //super(nrDoors, enginePower, currentSpeed, color, modelName);
         nrDoors = 2;
         enginePower = 125;
-        color = Color.RED;
+        color = Color.red;
         modelName = "Saab95";
         currentSpeed = getCurrentSpeed();
         stopEngine();  

@@ -21,4 +21,11 @@ public class test {
         assertEquals(Color.black, Car2.getColor());
     }
 
+    @Test
+    public void the_number_of_doors(){
+        var Car1 = new Saab95();
+
+        assertEquals(2, Saab95.nrDoors);
+    }
+
 }

@@ -8,7 +8,7 @@ interface CarInterface{
     public double speedFactor(double trimFactor);
     public void startEngine();
     public void stopEngine();
-    public void incrementSpeed(double amount, double currentSpeed, double trimFactor);
+    public void incrementSpeed(double amount, double trimFactor);
     public void decrementSpeed(double amount, double currentSpeed);
     public void gas(double amount);
     public void brake(double amount); 
@@ -23,7 +23,7 @@ public abstract class Car implements CarInterface, MovableInterface{
     public String modelName; // The car model name
     public double x; // x position
     public double y; // y position
-        
+
         public void setCurrentSpeed(double amount) {
             currentSpeed = amount;
         }
@@ -52,7 +52,7 @@ public abstract class Car implements CarInterface, MovableInterface{
             return enginePower * 0.01 * trimFactor;
         }
     
-        public void incrementSpeed(double amount, double currentSpeed, double trimFactor){
+        public void incrementSpeed(double amount, double trimFactor){
             currentSpeed = Math.min(getCurrentSpeed() + speedFactor(trimFactor) * amount,enginePower);
         }
     
@@ -77,7 +77,6 @@ public abstract class Car implements CarInterface, MovableInterface{
         }
 
         public void move(){
-            this.x =+ this.currentSpeed;
             this.y =+ this.currentSpeed;
         }
     
@@ -93,7 +92,7 @@ public abstract class Car implements CarInterface, MovableInterface{
 
     // TODO fix this method according to lab pm
         public void gas(double amount){
-        incrementSpeed(amount, amount, amount);
+        incrementSpeed(amount, amount );
         }
 
     // TODO fix this method according to lab pm
