@@ -47,14 +47,14 @@ public class Scania extends Car{
         return this.currentPlatformAngle;
     }
     private void anglePlatorm(double angle) {
-        double newAngle = getCurrentPlatformAngle() + calculateNewAngle(angle);
+        double newAngle = calculateNewAngle(angle);
         if (newAngleIsInsideRange(newAngle)) {
-            this.currentPlatformAngle += newAngle;
+            this.currentPlatformAngle = newAngle;
         }
     }
 
     private boolean newAngleIsInsideRange(double newAngle) {
-        return (newAngle+this.currentPlatformAngle <= 70 || newAngle+this.currentPlatformAngle>=0);
+        return (newAngle <= 70 || newAngle+this.currentPlatformAngle>=0);
 
     }
     private double calculateNewAngle(double angle) {
@@ -65,7 +65,7 @@ public class Scania extends Car{
             return getCurrentPlatformAngle() - 5;
 
         } else { 
-            return 0; 
+            return getCurrentPlatformAngle();
         }
     }
 
