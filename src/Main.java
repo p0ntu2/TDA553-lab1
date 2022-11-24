@@ -1,11 +1,20 @@
 package src;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        Car saab = new Saab95(2, 120, 0, Color.black, "Saab95", 0, 0, false, false);
-        saab.setCurrentSpeed(0);
-        saab.decrementSpeed(0.000001);
-        System.out.println(saab.getCurrentSpeed());
+        Car saab = new Saab95(2, 120, 0, Color.red, "Saab95", 0, 0, false, false);
+        Car vovlo = new Volvo240(4, 100, 0, Color.black, "Volvo240", 0, 0, false, false);
+        Car scania = new Scania(2, 375, 0, Color.green, "Scania", 0, 0, false, false, 0);
+
+        ArrayList<Car> cars = new ArrayList<Car>();
+
+        cars.add(vovlo); cars.add(saab); cars.add(scania);
+
+        for(Car p : cars) {
+            p.brake(0);
+        }
+
     }
 }
