@@ -1,25 +1,34 @@
+package src;
 import java.awt.*;
 
-public class Volvo240 extends Car {
+public class Saab95 extends Car {
+    private boolean turboOn;
 
-    private final static double trimFactor = 1.25;
-
-    public Volvo240(int doors, int power, int speed, Color color, String name, int x, int y, boolean turnLeft, boolean turnRight) {
+    public Saab95(int doors, int power, int speed, Color color, String name, int x, int y, boolean turnLeft, boolean turnRight){
         super(doors, power, speed, color, name, x, y, turnLeft, turnRight);
+    }
 
+    private void setTurboOn() {
+        turboOn = true;
+    }
+
+    private void setTurboOff() {
+        turboOn = false;
     }
 
     public double speedFactor() {
-        return getEnginePower() * 0.01 * trimFactor;
+        double turbo = 1;
+        if (turboOn)
+            turbo = 1.3;
+        return getEnginePower() * 0.01 * turbo;
     }
 
     public void incrementSpeed(double amount) {
         try {
-            if (getCurrentSpeed() > getEnginePower()) {
+            if (getCurrentSpeed() >= getEnginePower()) {
                 throw new Exception();
-
             } else {
-                setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
+                setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
             }
 
         } catch (Exception e) {
@@ -31,15 +40,16 @@ public class Volvo240 extends Car {
 
     public void decrementSpeed(double amount) {
         try {
-            if (getCurrentSpeed() < 0) {
+            if (getCurrentSpeed() <= 0) {
                 throw new Exception();
             } else {
-                setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0));
+                setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
             }
+
         } catch (Exception e) {
             System.out.println("the car is already still");
             setCurrentSpeed(0);
         }
-        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0));
+
     }
 }
