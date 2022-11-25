@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        Car saab = new Saab95(2, 120, 0, Color.red, "Saab95", 0, 0, false, false);
-        Car vovlo = new Volvo240(4, 100, 0, Color.black, "Volvo240", 0, 0, false, false);
-        Car scania = new Scania(2, 375, 0, Color.green, "Scania", 0, 0, false, false, 0);
+        Saab95 saab = new Saab95(2, 120, 0, Color.red, "Saab95", 0, 0, false, false);
+        Volvo240 vovlo = new Volvo240(4, 100, 0, Color.black, "Volvo240", 0, 0, false, false);
+        Scania scania = new Scania(2, 375, 0, Color.green, "Scania", 0, 0, false, false, 0);
 
         ArrayList<Car> cars = new ArrayList<Car>();
 
@@ -16,5 +16,10 @@ public class Main {
             p.brake(0);
         }
 
+        Saab95 saab2 = new Saab95(2, 120, 0, Color.red, "Saab95", 0, 0, false, false);
+
+
+        scania.gas(20);
+        System.out.println(scania.getCurrentSpeed());
     }
 }

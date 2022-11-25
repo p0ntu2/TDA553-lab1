@@ -43,13 +43,13 @@ public class CarTest {
     }
 
     // Startar motorn med startEngine på testVolvo och sedan ökas hastigheten med incrementSpeed som tar in 3 som argument. Borde ge 3.85 som svar
-    @Test
-    public void currentSpeed_should_be_3_85() {
-        Car testVolvo = new Volvo240(4, 100, 0, Color.black, "Volvo240", 3, 7, false, false);
-        testVolvo.startEngine();
-        testVolvo.incrementSpeed(3);
-        assertEquals(3.85, testVolvo.getCurrentSpeed(), 3.85);
-    }
+    // @Test
+    // public void currentSpeed_should_be_3_85() {
+    //     Car testVolvo = new Volvo240(4, 100, 0, Color.black, "Volvo240", 3, 7, false, false);
+    //     testVolvo.startEngine();
+    //     testVolvo.incrementSpeed(3);
+    //     assertEquals(3.85, testVolvo.getCurrentSpeed(), 3.85);
+    // }
 
     // Ändrar hastigheten till 3.85 sedan rör sig bilen, listan borde bli [3.0, 10.85]
     @Test

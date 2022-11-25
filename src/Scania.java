@@ -15,48 +15,15 @@ public class Scania extends Car{
         return getEnginePower() * 0.01;
     }
 
-    public void incrementSpeed(double amount) {
-        try {
-            if (getCurrentSpeed() >= getEnginePower()) {
-                throw new Exception();
-            } else {
-                setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
-            }
-
-        } catch (Exception e) {
-            System.out.println("the car is already at max speed");
-            setCurrentSpeed(getEnginePower());
-        }
-    }
-
-    public void decrementSpeed(double amount) {
-        try {
-            if (getCurrentSpeed() <= 0) {
-                throw new Exception();
-            } else {
-                setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
-            }
-
-        } catch (Exception e) {
-            System.out.println("the car is already still");
-            setCurrentSpeed(0);
-        }
-    }
-
     public double getCurrentPlatformAngle() {
         return this.currentPlatformAngle;
     }
 
     public void anglePlatorm(double angle) {
         double newAngle = calculateNewAngle(angle);
-        if (newAngleIsInsideRange(newAngle)) {
+        if (newAngleIsInsideRange(newAngle) & scaniaIsNotMoving(getCurrentSpeed())) {
             this.currentPlatformAngle = newAngle;
         }
-    }
-
-    private boolean newAngleIsInsideRange(double newAngle) {
-        return (newAngle <= 70 || newAngle+this.currentPlatformAngle>=0);
-
     }
 
     private double calculateNewAngle(double angle) {
@@ -71,4 +38,11 @@ public class Scania extends Car{
         }
     }
 
+    private boolean newAngleIsInsideRange(double newAngle) {
+        return (newAngle <= 70 || newAngle+this.currentPlatformAngle>=0);
+    }
+
+    private boolean scaniaIsNotMoving(double speed) {
+        return (speed == 0);
+    }
 }

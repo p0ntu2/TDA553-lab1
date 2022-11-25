@@ -9,9 +9,30 @@ import java.awt.*;
 public class ScaniaTest {
     
     @Test
-    public void angleShouldNotBeLessThanZeroNorMoreThan70() {
+    public void angleShouldNotBeLessThan0() {
         Scania testScania = new Scania(2, 375, 0, Color.green, "Scania", 0, 0, false, false, 0);
         testScania.anglePlatorm(-5);
         assertEquals(0, testScania.getCurrentPlatformAngle());
+    }
+
+    @Test
+    public void angleSHouldNotBeMoreThan70() {
+        Scania testScania = new Scania(2, 375, 0, Color.green, "Scania", 0, 0, false, false, 70);
+        testScania.anglePlatorm(5);
+        assertEquals(70, testScania.getCurrentPlatformAngle());
+    }
+
+    @Test
+    public void cannotMovePlatformWhileMoving() {
+        Scania testScania = new Scania(2, 375, 20, Color.green, "Scania", 0, 0, false, false, 0);
+        testScania.anglePlatorm(20);
+        assertEquals(0, testScania.getCurrentPlatformAngle());
+    }
+
+    @Test
+    public void cannotMoveVehicleWhilePlatformIsLowered() {
+        Scania testScania = new Scania(2, 375, 0, Color.green, "Scania", 0, 0, false, false, 70);
+        testScania.gas(0.1);
+        assertEquals(0, testScania.getCurrentSpeed());
     }
 }
