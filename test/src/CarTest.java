@@ -137,4 +137,3 @@ public class CarTest {
         assertTrue(testVolvo.getTurnRight());
     }
 }
-
