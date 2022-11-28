@@ -3,6 +3,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.Test;
 
 public class CarTest {
@@ -42,20 +44,18 @@ public class CarTest {
         assertEquals(Color.black, testVolvo.getColor());
     }
 
-    // Startar motorn med startEngine på testVolvo och sedan ökas hastigheten med incrementSpeed som tar in 3 som argument. Borde ge 3.85 som svar
-    // @Test
-    // public void currentSpeed_should_be_3_85() {
-    //     Car testVolvo = new Volvo240(4, 100, 0, Color.black, "Volvo240", 3, 7, false, false);
-    //     testVolvo.startEngine();
-    //     testVolvo.incrementSpeed(3);
-    //     assertEquals(3.85, testVolvo.getCurrentSpeed(), 3.85);
-    // }
+    // Startar motorn med startEngine på testVolvo och currentSpeed bör sättas till 0.1
+    @Test
+    public void currentSpeed_should_be_0_1() {
+        Car testVolvo = new Volvo240(4, 100, 0, Color.black, "Volvo240", 3, 7, false, false);
+        testVolvo.startEngine();
+        assertEquals(0.1, testVolvo.getCurrentSpeed(), 0.1);
+    }
 
-    // Ändrar hastigheten till 3.85 sedan rör sig bilen, listan borde bli [3.0, 10.85]
+    // Ändrar hastigheten till 4 sedan rör sig bilen, listan borde bli [3.0, 11.0]
     @Test
     public void after_move_x_should_not_change_and_y_should_be_10_85() {
-        Car testVolvo = new Volvo240(4, 100, 0, Color.black, "Volvo240", 3, 7, false, false);
-        testVolvo.setCurrentSpeed(3.85);
+        Car testVolvo = new Volvo240(4, 100, 4, Color.black, "Volvo240", 3, 7, false, false);
         testVolvo.move();
         ArrayList testList = new ArrayList<>();
         testList.add(testVolvo.getX()); 
@@ -63,7 +63,7 @@ public class CarTest {
         
         ArrayList trueList = new ArrayList<>();
         trueList.add(3.0); 
-        trueList.add(10.85);
+        trueList.add(11.0);
 
         assertEquals(trueList, testList);
     }
@@ -100,30 +100,40 @@ public class CarTest {
     
     @Test
     public void test_increment_speed_saab(){
-        Car testSaab = new Saab95(2, 125, 0, Color.red, "Saab95", 2, 5, false, false);
-        testSaab.setCurrentSpeed(testSaab.getEnginePower());
+        Car testSaab = new Saab95(2, 125, 125, Color.red, "Saab95", 2, 5, false, false);
         testSaab.gas(0.5);
         assertEquals(125, testSaab.getCurrentSpeed(), 125);
     }
     @Test
     public void test_decrement_speed_saab(){
         Car testSaab = new Saab95(2, 125, 0, Color.red, "Saab95", 2, 5, false, false);
-        testSaab.setCurrentSpeed(0);
         testSaab.brake(0.5);
         assertEquals(0, testSaab.getCurrentSpeed(), 0);
     }
     @Test
     public void test_increment_speed_volvo(){
-        Car testVolvo = new Volvo240(4, 100, 0, Color.black, "Volvo240", 3, 7, false, false);
-        testVolvo.setCurrentSpeed(testVolvo.getEnginePower());
+        Car testVolvo = new Volvo240(4, 100, 100, Color.black, "Volvo240", 3, 7, false, false);
         testVolvo.gas(0.5);
         assertEquals(100, testVolvo.getCurrentSpeed(), 0.1);
     }
     @Test
     public void test_decrement_speed_volvo(){
         Car testVolvo = new Volvo240(4, 100, 0, Color.black, "Volvo240", 3, 7, false, false);
-        testVolvo.setCurrentSpeed(0);
         testVolvo.brake(0.5);
         assertEquals(0, testVolvo.getCurrentSpeed(), 0.1);
+    }
+
+    @Test
+    public void turn_left_should_be_true() {
+        Car testVolvo = new Volvo240(4, 100, 0, Color.black, "Volvo240", 3, 7, false, false);
+        testVolvo.turnLeft();
+        assertTrue(testVolvo.getTurnLeft());
+    }
+
+    @Test
+    public void turn_right_should_be_true() {
+        Car testVolvo = new Volvo240(4, 100, 0, Color.black, "Volvo240", 3, 7, false, false);
+        testVolvo.turnRight();
+        assertTrue(testVolvo.getTurnRight());
     }
 }
