@@ -14,33 +14,5 @@ public class Volvo240 extends Car {
         return getEnginePower() * 0.01 * trimFactor;
     }
 
-    public void incrementSpeed(double amount) {
-        try {
-            if (getCurrentSpeed() > getEnginePower()) {
-                throw new Exception();
 
-            } else {
-                setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
-            }
-
-        } catch (Exception e) {
-            System.out.println("the car is already at max speed");
-            setCurrentSpeed(getEnginePower());
-        }
-
-    }
-
-    public void decrementSpeed(double amount) {
-        try {
-            if (getCurrentSpeed() < 0) {
-                throw new Exception();
-            } else {
-                setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0));
-            }
-        } catch (Exception e) {
-            System.out.println("the car is already still");
-            setCurrentSpeed(0);
-        }
-        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0));
-    }
 }

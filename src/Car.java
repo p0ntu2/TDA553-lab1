@@ -126,13 +126,39 @@ public abstract class Car implements Movable {
 
         }
     }
+    public void incrementSpeed(double amount) {
+        try {
+            if (getCurrentSpeed() >= getEnginePower()) {
+                throw new Exception();
+            } else {
+                setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
+            }
+
+        } catch (Exception e) {
+            System.out.println("the car is already at max speed");
+            setCurrentSpeed(getEnginePower());
+        }
+
+    }
+
+    public void decrementSpeed(double amount) {
+        try {
+            if (getCurrentSpeed() <= 0) {
+                throw new Exception();
+            } else {
+                setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
+            }
+
+        } catch (Exception e) {
+            System.out.println("the car is already still");
+            setCurrentSpeed(0);
+        }
+
+    }
+
 
 
     abstract double speedFactor();
-
-    abstract void incrementSpeed(double amount);
-
-    abstract void decrementSpeed(double amount);
 
     // TODO fix this method according to lab pm
 
