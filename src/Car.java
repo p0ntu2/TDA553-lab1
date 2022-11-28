@@ -93,10 +93,6 @@ public abstract class Car implements Movable {
     public boolean getTurnRight() {
         return this.turnRight;
     }
-    
-    public boolean getTurnRight() {
-        return this.turnRight;
-    }
 
     public void move() {
         if (this.turnLeft == true) {
