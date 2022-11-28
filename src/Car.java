@@ -2,11 +2,11 @@ package src;
 import java.awt.*;
 
 public abstract class Car implements Movable {
-    private int nrDoors; // Number of doors on the car
-    private double enginePower; // Engine power of the car
+    final private int nrDoors; // Number of doors on the car
+    final private double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
-    private String modelName; // The car model name
+    final private String modelName; // The car model name
     private double x;
     private double y;
     private boolean turnLeft, turnRight;
@@ -80,16 +80,16 @@ public abstract class Car implements Movable {
         this.turnRight = false;
         this.turnLeft = true;
     }
-
+    
     public boolean  getTurnLeft() {
         return this.turnLeft;
     }
 
     public void turnRight() {
         this.turnLeft = false;
-        this.turnRight = true;
+        this.turnRight = false;
     }
-
+    
     public boolean getTurnRight() {
         return this.turnRight;
     }
@@ -134,7 +134,6 @@ public abstract class Car implements Movable {
 
         }
     }
-
     private void incrementSpeed(double amount) {
         try {
             if (getCurrentSpeed() >= getEnginePower()) {

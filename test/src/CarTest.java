@@ -52,7 +52,7 @@ public class CarTest {
         assertEquals(0.1, testVolvo.getCurrentSpeed(), 0.1);
     }
 
-    // Ändrar hastigheten till 3.85 sedan rör sig bilen, listan borde bli [3.0, 10.85]
+    // Ändrar hastigheten till 4 sedan rör sig bilen, listan borde bli [3.0, 11.0]
     @Test
     public void after_move_x_should_not_change_and_y_should_be_10_85() {
         Car testVolvo = new Volvo240(4, 100, 4, Color.black, "Volvo240", 3, 7, false, false);
