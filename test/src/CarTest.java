@@ -57,11 +57,11 @@ public class CarTest {
         Car testVolvo = new Volvo240(4, 100, 0, Color.black, "Volvo240", 3, 7, false, false);
         testVolvo.setCurrentSpeed(3.85);
         testVolvo.move();
-        ArrayList testList = new ArrayList<>();
+        ArrayList<Double> testList = new ArrayList<>();
         testList.add(testVolvo.getX()); 
         testList.add(testVolvo.getY());
         
-        ArrayList trueList = new ArrayList<>();
+        ArrayList<Double> trueList = new ArrayList<>();
         trueList.add(3.0); 
         trueList.add(10.85);
 

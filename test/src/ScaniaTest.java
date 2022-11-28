@@ -24,9 +24,9 @@ public class ScaniaTest {
 
     @Test
     public void cannotMovePlatformWhileMoving() {
-        Scania testScania = new Scania(2, 375, 20, Color.green, "Scania", 0, 0, false, false, 0);
-        testScania.anglePlatorm(20);
-        assertEquals(0, testScania.getCurrentPlatformAngle());
+        Scania testScania = new Scania(2, 375, 20, Color.green, "Scania", 0, 0, false, false, 70);
+        testScania.anglePlatorm(-20);
+        assertEquals(70, testScania.getCurrentPlatformAngle());
     }
 
     @Test

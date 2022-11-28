@@ -19,7 +19,7 @@ public class Main {
         Saab95 saab2 = new Saab95(2, 120, 0, Color.red, "Saab95", 0, 0, false, false);
 
 
-        scania.gas(20);
-        System.out.println(scania.getCurrentSpeed());
+        scania.gas(0.1);
+        System.out.println(scania.getCurrentPlatformAngle());
     }
 }
