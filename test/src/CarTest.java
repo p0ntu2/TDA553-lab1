@@ -126,5 +126,6 @@ public class CarTest {
         testVolvo.brake(0.5);
         assertEquals(0, testVolvo.getCurrentSpeed(), 0.1);
     }
+
 }
 
