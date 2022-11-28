@@ -54,7 +54,7 @@ public class CarTest {
 
     // Ändrar hastigheten till 4 sedan rör sig bilen, listan borde bli [3.0, 11.0]
     @Test
-    public void after_move_x_should_not_change_and_y_should_be_10_85() {
+    public void after_move_x_should_not_change_and_y_should_be_11_0() {
         Car testVolvo = new Volvo240(4, 100, 4, Color.black, "Volvo240", 3, 7, false, false);
         testVolvo.move();
         ArrayList testList = new ArrayList<>();
