@@ -36,7 +36,7 @@ public abstract class Car implements Movable {
         return this.currentSpeed;
     }
 
-    public void setCurrentSpeed(double ammount) {
+    private void setCurrentSpeed(double ammount) {
         this.currentSpeed = ammount;
     }
 
