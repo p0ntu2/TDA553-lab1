@@ -36,8 +36,8 @@ public abstract class Car implements Movable {
         return this.currentSpeed;
     }
 
-    public void setCurrentSpeed(double ammount) {
-        this.currentSpeed = ammount;
+    public void setCurrentSpeed(double amount) {
+        this.currentSpeed = amount;
     }
 
     public String getName(){
@@ -68,22 +68,29 @@ public abstract class Car implements Movable {
         return this.y;
     }
 
-    public void setX(double ammount) {
-        this.x += ammount;
+    public void setX(double amount) {
+        this.x += amount;
     }
 
-    public void setY(double ammount) {
-        this.y += ammount;
+    public void setY(double amount) {
+        this.y += amount;
     }
-
     public void turnLeft() {
         this.turnRight = false;
         this.turnLeft = true;
     }
 
+    public boolean  getTurnLeft() {
+        return this.turnLeft;
+    }
+
     public void turnRight() {
         this.turnLeft = false;
         this.turnRight = false;
+    }
+
+    public boolean getTurnRight() {
+        return this.turnRight;
     }
 
     public void move() {
@@ -126,14 +133,36 @@ public abstract class Car implements Movable {
 
         }
     }
+    private void incrementSpeed(double amount) {
+        try {
+            if (getCurrentSpeed() >= getEnginePower()) {
+                throw new Exception();
+            } else {
+                setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
+            }
 
+        } catch (Exception e) {
+            System.out.println("the car is already at max speed");
+            setCurrentSpeed(getEnginePower());
+        }
+
+    }
+
+    private void decrementSpeed(double amount) {
+        try {
+            if (getCurrentSpeed() <= 0) {
+                throw new Exception();
+            } else {
+                setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
+            }
+
+        } catch (Exception e) {
+            System.out.println("the car is already still");
+            setCurrentSpeed(0);
+        }
+
+    }
 
     abstract double speedFactor();
-
-    abstract void incrementSpeed(double amount);
-
-    abstract void decrementSpeed(double amount);
-
-    // TODO fix this method according to lab pm
 
 }
