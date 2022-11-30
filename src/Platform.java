@@ -2,11 +2,10 @@ package src;
 import java.awt.*;
 
 public class Platform {
-    
-    Scania scania = new Scania(2, 375, 0, Color.green, "Scania", 0, 0, false, false, 0);
 
     private int maxAngle;
     private double currentPlatformAngle;
+    
     public Platform(int maxAngle, double angle) {
         this.maxAngle = maxAngle;
         this.currentPlatformAngle = angle;
