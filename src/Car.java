@@ -87,7 +87,7 @@ public abstract class Car implements Movable {
 
     public void turnRight() {
         this.turnLeft = false;
-        this.turnRight = false;
+        this.turnRight = true;
     }
 
     public boolean getTurnRight() {

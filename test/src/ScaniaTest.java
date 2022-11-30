@@ -16,10 +16,10 @@ public class ScaniaTest {
     }
 
     @Test
-    public void angleSHouldNotBeMoreThan70() {
+    public void angleSHouldNotBeMoreThanMaxAngle() {
         Scania testScania = new Scania(2, 375, 0, Color.green, "Scania", 0, 0, false, false, 70);
         testScania.anglePlatorm(5);
-        assertEquals(70, testScania.getCurrentPlatformAngle());
+        assertEquals(testScania.getMaxAngle(), testScania.getCurrentPlatformAngle());
     }
 
     @Test

@@ -2,7 +2,8 @@ package src;
 import java.awt.*;
 
 public class Saab95 extends Car {
-    private TurboCar turboCar = new TurboCar();
+
+    private TurboCar turboCar;
 
     public Saab95(int doors, int power, int speed, Color color, String name, int x, int y, boolean turnLeft, boolean turnRight) {
         super(doors, power, speed, color, name, x, y, turnLeft, turnRight);
@@ -11,5 +12,17 @@ public class Saab95 extends Car {
 
     public double speedFactor() {
         return getEnginePower() * 0.01 * turboCar.getTurboValue();
+    }
+
+    public void setTurboOn() {
+        turboCar.setTurboOn();
+    }
+
+    public void setTurboOff() {
+        turboCar.setTurboOff();
+    }
+
+    public boolean getTurboOn() {
+        return turboCar.getTurboOn();
     }
 }
