@@ -1,6 +1,7 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class CarLoader {
@@ -9,7 +10,7 @@ public class CarLoader {
     private double currentLoad;
     private double x;
     private double y;
-    private ArrayList<Car> loadedCars = new ArrayList<Car>();
+    private List<Car> loadedCars;
     Random random = new Random();
 
     public CarLoader(double maxLoad, double currentLoad, double x, double y){
@@ -17,10 +18,14 @@ public class CarLoader {
         this.y=y;
         this.currentLoad=currentLoad;
         this.maxLoad=maxLoad;
-        this.loadedCars=null;
+        this.loadedCars=new ArrayList<Car>();
     }
     public double getCurrentLoad(){
         return this.currentLoad;
+    }
+    
+    public List<Car> getCurrentLoadedCars(){
+        return this.loadedCars;
     }
 
     public void loadCars(Car car) {
