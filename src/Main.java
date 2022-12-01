@@ -16,7 +16,6 @@ public class Main {
             p.brake(0);
         }
 
-        Saab95 saab2 = new Saab95(2, 120, 0, Color.red, "Saab95", 0, 0, false, false);
 
 
         scania.gas(0.1);

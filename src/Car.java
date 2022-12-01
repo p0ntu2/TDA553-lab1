@@ -36,10 +36,6 @@ public abstract class Car implements Movable {
         return this.currentSpeed;
     }
 
-    private void setCurrentSpeed(double ammount) {
-        this.currentSpeed = ammount;
-    }
-
     public String getName(){
         return this.modelName;
     }
@@ -109,7 +105,7 @@ public abstract class Car implements Movable {
 
     public void gas(double amount) {
         try {
-            if (amount <= 0 || amount >= 1) {
+            if (cannotGas(amount)) {
                 throw new Exception();
             } else {
                 incrementSpeed(amount);
@@ -163,4 +159,5 @@ public abstract class Car implements Movable {
     }
 
     abstract double speedFactor();
+    abstract boolean cannotGas(double amount);
 }

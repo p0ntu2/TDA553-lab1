@@ -25,4 +25,8 @@ public class Saab95 extends Car {
     public boolean getTurboOn() {
         return turboCar.getTurboOn();
     }
+
+    public boolean cannotGas(double amount) {
+        return (amount <= 0 || amount >= 1);
+    }
 }

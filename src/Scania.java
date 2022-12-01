@@ -34,18 +34,8 @@ public class Scania extends Car {
         return (speed == 0);
     }
 
-    @Override
-    public void gas(double amount) {
-        try {
-            if ((amount <= 0 || amount >= 1) || (getCurrentPlatformAngle() > 0)) {
-                throw new Exception();
-            } else {
-                incrementSpeed(amount);
-            }
-
-        } catch (Exception e) {
-            System.out.println("impossible amount");
-        }
+    public boolean cannotGas(double amount) {
+        return ((amount <= 0 || amount >= 1) || (getCurrentPlatformAngle() > 0));
     }
 
 }

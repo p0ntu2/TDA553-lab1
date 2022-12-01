@@ -23,29 +23,29 @@ public class Platform {
     public void anglePlatorm(double angle, boolean CarisNotMoving) {
         double newAngle = calculateNewAngle(angle);
         if (newAngleIsInsideRange(newAngle) & CarisNotMoving) {
-            setPlatformAngle(newAngle);
+            currentPlatformAngle = newAngle;
         }
     }
 
     // Calculates the new angle based on the argument given when calling anglePlatform()
     private double calculateNewAngle(double angle) {
         if (angle > 0) {
-            return Math.min(this.maxAngle, getCurrentPlatformAngle() + angle);
+            return Math.min(maxAngle, currentPlatformAngle + angle);
 
         } else if (angle < 0) {
-            return Math.max(0, getCurrentPlatformAngle() + angle);
+            return Math.max(0, currentPlatformAngle + angle);
 
         } else { 
-            return getCurrentPlatformAngle();
+            return currentPlatformAngle;
         }
+    }
+
+    public boolean canDrive() {
+        return (currentPlatformAngle == 0);
     }
 
     // Returns true if the newAngle is between 70 and 0 degrees
     private boolean newAngleIsInsideRange(double newAngle) {
-        return (newAngle <= this.maxAngle || newAngle+getCurrentPlatformAngle()>=0);
-    }
-
-    private void setPlatformAngle(double newAngle) {
-        this.currentPlatformAngle = newAngle;
+        return (newAngle <= maxAngle || newAngle+currentPlatformAngle>=0);
     }
 }
