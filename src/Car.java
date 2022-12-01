@@ -130,7 +130,7 @@ public abstract class Car implements Movable {
         }
     }
 
-    protected void incrementSpeed(double amount) {
+    private void incrementSpeed(double amount) {
         try {
             if (currentSpeed >= enginePower) {
                 throw new Exception();
