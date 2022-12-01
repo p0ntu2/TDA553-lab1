@@ -1,21 +1,28 @@
 package src;
-import java.awt.*;
 
 public class Platform {
 
     private int maxAngle;
     private double currentPlatformAngle;
-    
+
     public Platform(int maxAngle, double angle) {
         this.maxAngle = maxAngle;
         this.currentPlatformAngle = angle;
     }
 
+    public int getMaxAngle() {
+        return this.maxAngle;
+    }
+
+    public double getCurrentPlatformAngle() {
+        return this.currentPlatformAngle;
+    } 
+
     // Lowers or raises the platform depending if "angle" is negative or positive. The car has to be standing still to move the platform.
     // The range is between 70 degrees (fully raised) and 0 degrees (fully lowered).
-    public void anglePlatorm(double angle, boolean isNotMoving) {
+    public void anglePlatorm(double angle, boolean CarisNotMoving) {
         double newAngle = calculateNewAngle(angle);
-        if (newAngleIsInsideRange(newAngle) & isNotMoving) {
+        if (newAngleIsInsideRange(newAngle) & CarisNotMoving) {
             setPlatformAngle(newAngle);
         }
     }
@@ -36,14 +43,6 @@ public class Platform {
     // Returns true if the newAngle is between 70 and 0 degrees
     private boolean newAngleIsInsideRange(double newAngle) {
         return (newAngle <= this.maxAngle || newAngle+getCurrentPlatformAngle()>=0);
-    }
-
-    public int getMaxAngle() {
-        return this.maxAngle;
-    }
-
-    public double getCurrentPlatformAngle() {
-        return this.currentPlatformAngle;
     }
 
     private void setPlatformAngle(double newAngle) {

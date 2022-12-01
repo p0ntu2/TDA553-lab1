@@ -95,15 +95,15 @@ public abstract class Car implements Movable {
     }
  
     public void move() {
-        if (this.turnLeft == true) {
-            setX(-getCurrentSpeed());
-            setY(getCurrentSpeed());
+        if (turnLeft == true) {
+            x += -currentSpeed;
+            y += currentSpeed;
 
-        } else if (this.turnRight == true) {
-            setX(getCurrentSpeed());
-            setY(getCurrentSpeed());
+        } else if (turnRight == true) {
+            x += currentSpeed;
+            y += currentSpeed;
         } else {
-            setY(getCurrentSpeed());
+            y += currentSpeed;
         }
     }
 
@@ -136,29 +136,29 @@ public abstract class Car implements Movable {
 
     protected void incrementSpeed(double amount) {
         try {
-            if (getCurrentSpeed() >= getEnginePower()) {
+            if (currentSpeed >= enginePower) {
                 throw new Exception();
             } else {
-                setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
+                currentSpeed = currentSpeed + speedFactor() * amount;
             }
 
         } catch (Exception e) {
             System.out.println("the car is already at max speed");
-            setCurrentSpeed(getEnginePower());
+            currentSpeed = enginePower;
         }
     }
 
     private void decrementSpeed(double amount) {
         try {
-            if (getCurrentSpeed() <= 0) {
+            if (currentSpeed <= 0) {
                 throw new Exception();
             } else {
-                setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
+                currentSpeed = currentSpeed - speedFactor() * amount;
             }
 
         } catch (Exception e) {
             System.out.println("the car is already still");
-            setCurrentSpeed(0);
+            currentSpeed = 0;
         }
     }
 
