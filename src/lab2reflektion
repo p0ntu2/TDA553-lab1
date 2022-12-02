@@ -1,0 +1,19 @@
+Lab 2 reflection:
+1)	 The contract for gas is “Sends a value to incrementSpeed. The value must between 0 and 1. Throws an exception if value<0 or value>1. 
+Else sends the value to incrementSpeed.” And for brake it’s ”Sends a value to decrementSpeed. The value must between 0 and 1. Throws an 
+exception if value<0 or value>1. Else sends the value to decrementSpeed.”. Volvo just sends a value to the functions and thus doesn’t brake the 
+contract since it doesn’t alter it in any way. Scania also follows the contract of both of them but it also has an extra condition for gas since
+it’s not allowed to move when it’s platform is raised. It accomplishes this with an extra function called tryGas in it’s superclass Truck that is 
+a subclass of Car. So it still follows the contract by sending in a value just that it has to meet certain conditions to send in said value. 
+So all objects of subclasses still behave like objects of superclasses, thus we are following Liskovs Substitution Principle. 
+ 
+2)	We handled the duplication between Scania and the transport by implementing a subclass of Car called Truck and making the two of them subclasses of that. 
+The only direct shared ability between the two is that they cant move under certain conditions so the Truck class handled that by blocking the Gas function if 
+the object should not be allowed to move. SO for the Scania truck it checked which angle it’s platform was at and then set a Boolean in Truck to true if it was
+allowed to move and false if it wasn’t. The transport did the same bit it checked if it’s ramp was up or down instead. The loading functions that were shared 
+between the transport and workshop we handle by implementing a new class called Carloader that held all the relevant functions. We then made the workshop a 
+subclass of the Carloader class since it only needed it’s functions. Since the transporter was a subclass of truck we used delegation and just let transporter
+use the functions from Carloader via a object of the class so it didn’t need to become a subclass.
+
+3)	We did not alter the design from lab 1 to implement the changes for lab 2 but we realized that our first design was flawed in some ways so we improved it.
+We saw that with our original design you could not easily make multiple different turbocars or cars with both turbo and trim. It didn’t violate the Open-closed principles since you wouldn’t have had to change the pre-existing code to add a new car with for example turbo but it would have led to a lot of duplicated code. Since we saw that we would have to do something as to not duplicate code with the Scania and transport trucks we decided to implement the same changes for the original cars as well since it makes the whole code better. So we didn’t have to change the code to implement the new changes but we did it a bit to improve the code.
