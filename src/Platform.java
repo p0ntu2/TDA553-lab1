@@ -2,20 +2,19 @@ package src;
 
 public class Platform {
 
-    private int maxAngle;
+    private double maxAngle;
     private double currentPlatformAngle;
-    private boolean platformUp;
 
     public Platform(int maxAngle, double angle) {
         this.maxAngle = maxAngle;
         this.currentPlatformAngle = angle;
     }
 
-    public Platform(boolean platformUp) {
-        this.platformUp = platformUp;
-    }
+    // public Platform(boolean platformUp) {
+    //     this.platformUp = platformUp;
+    // }
 
-    public int getMaxAngle() {
+    public double getMaxAngle() {
         return this.maxAngle;
     }
 
@@ -29,23 +28,15 @@ public class Platform {
         double newAngle = calculateNewAngle(angle);
         if (newAngleIsInsideRange(newAngle) & CarisNotMoving) {
             currentPlatformAngle = newAngle;
-        
-        } else if (platformUp) {
-            platformUp = false;
-       
-        } else {
-            platformUp = true;
         }
     }
-
-
 
     // Calculates the new angle based on the argument given when calling anglePlatform()
     private double calculateNewAngle(double angle) {
         if (angle > 0) {
             return Math.min(maxAngle, currentPlatformAngle + angle);
 
-        } else if (angle < 0) {
+        } else if (angle <= 0) {
             return Math.max(0, currentPlatformAngle + angle);
 
         } else { 

@@ -20,5 +20,8 @@ public class Main {
 
         scania.gas(0.1);
         System.out.println(scania.getCurrentPlatformAngle());
+
+        CarTransporter carTransporterTest = new CarTransporter(2, 375, 0, Color.green, "CarTransporter", 0, 0, false, false, 0, 0, 0);
+
     }
 }

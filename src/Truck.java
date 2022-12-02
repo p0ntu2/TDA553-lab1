@@ -1,7 +1,7 @@
 package src;
 import java.awt.*;
 
-public class Truck extends Car {
+abstract class Truck extends Car {
 
     private Platform platform;
 
@@ -11,11 +11,11 @@ public class Truck extends Car {
         this.platform = new Platform(maxAngle, angle);
     }
 
-    // Om platformen endast kan vara uppe eller nere
-    public Truck(int doors, int power, int speed, Color color, String name, int x, int y, boolean turnLeft, boolean turnRight, double angle, boolean platformUp) {
-        super(doors, 375, speed, color, name, x, y, turnLeft, turnRight);
-        this.platform = new Platform(platformUp);
-    }
+    // // Om platformen endast kan vara uppe eller nere
+    // public Truck(int doors, int power, int speed, Color color, String name, int x, int y, boolean turnLeft, boolean turnRight, double angle, boolean platformUp) {
+    //     super(doors, 375, speed, color, name, x, y, turnLeft, turnRight);
+    //     this.platform = new Platform(platformUp);
+    // }
 
     public double speedFactor() {
         return getEnginePower() * 0.01;
@@ -25,19 +25,19 @@ public class Truck extends Car {
         return platform.getCurrentPlatformAngle();
     }
 
-    public int getMaxAngle() {
+    public double getMaxAngle() {
         return platform.getMaxAngle();
     }
 
     // Lowers or raises the platform depending if "angle" is negative or positive. The car has to be standing still to move the platform.
     // The range is between 70 degrees (fully raised) and 0 degrees (fully lowered).
     public void anglePlatorm(double angle) {
-        boolean isNotMoving = TruckIsIsNotMoving(getCurrentSpeed());
+        boolean isNotMoving = TruckIsNotMoving(getCurrentSpeed());
         platform.anglePlatorm(angle, isNotMoving);
     }
 
     // Returns true if the car is not moving
-    public boolean TruckIsIsNotMoving(double speed) {
+    public boolean TruckIsNotMoving(double speed) {
         return (speed == 0);
     }
 
