@@ -21,7 +21,6 @@ public class Transport extends Truck {
     }
 
     public void setrampDownFalse() {
-
         this.rampDown = false;
         setCanMoveTrue();
 
@@ -30,22 +29,25 @@ public class Transport extends Truck {
     public double getCurrentLoad() {
         return loader.getCurrentLoad();
     }
+    public boolean getRampPosition(){
+        return this.rampDown;
+    }
 
-    private void loadCars(Car car) {
+    public void loadCars(Car car) {
         if (rampDown == true) {
             loader.loadCars(car);
         }
 
     }
 
-    private void unLoadCar() {
+    public void unLoadCar() {
         if (rampDown = true) {
             loader.unLoadCar();
         }
 
     }
 
-    private void unLoadAllCars() {
+    public void unLoadAllCars() {
         if (rampDown = true) {
             loader.unLoadAllCars();
         }
