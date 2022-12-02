@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class CarWorkshop {
+public class CarLoader {
 
     private double maxLoad;
     private double currentLoad;
@@ -13,7 +13,7 @@ public class CarWorkshop {
     private List<Car> loadedCars;
     Random random = new Random();
 
-    public CarWorkshop(double maxLoad, double currentLoad, double x, double y){
+    public CarLoader(double maxLoad, double currentLoad, double x, double y){
         this.x=x;
         this.y=y;
         this.currentLoad=currentLoad;
