@@ -14,8 +14,4 @@ public class Volvo240 extends Car {
     public double speedFactor() {
         return getEnginePower() * 0.01 * trimCar.getTrimFactor();
     }
-
-    public boolean cannotGas(double amount) {
-        return (amount <= 0 || amount >= 1);
-    }
 }

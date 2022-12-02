@@ -105,7 +105,7 @@ public abstract class Car implements Movable {
 
     public void gas(double amount) {
         try {
-            if (cannotGas(amount)) {
+            if ((amount <= 0 || amount >= 1)) {
                 throw new Exception();
             } else {
                 incrementSpeed(amount);
@@ -130,7 +130,7 @@ public abstract class Car implements Movable {
         }
     }
 
-    private void incrementSpeed(double amount) {
+    void incrementSpeed(double amount) {
         try {
             if (currentSpeed >= enginePower) {
                 throw new Exception();
@@ -159,5 +159,5 @@ public abstract class Car implements Movable {
     }
 
     abstract double speedFactor();
-    abstract boolean cannotGas(double amount);
+    // abstract boolean cannotGas(double amount);
 }
