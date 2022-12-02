@@ -2,51 +2,51 @@ package src;
 
 import java.awt.Color;
 
-import javax.swing.tree.TreeCellEditor;
-
 public class Transport extends Truck {
     private CarLoader loader;
-    private Boolean rampUp;
+    private Boolean rampDown;
 
 
     public Transport(int doors, double power, double speed, Color caColor, String name, double x, double y,
             boolean left, boolean right, double maxLoad, double currentLoad) {
         super(doors, power, speed, caColor, name, x, y, left, right);
         this.loader=new CarLoader(maxLoad, currentLoad, x, y);
-        this.rampUp=false;
-
-
-        // TODO Auto-generated constructor stub
+        this.rampDown=false;
     }
-    public void setRampUpTrue() {
-        this.rampUp = true;
-        setCanMoveTrue();
-    }
-    public void setRampUpFalse() {
+
+    public void setrampDownTrue() {
         if(getCurrentSpeed()==0){
-            this.rampUp = false;
+            this.rampDown = true;
             setCanMoveFalse();
-        }  
+        } 
     }
+
+    public void setrampDownFalse() {
+         
+        this.rampDown = false;
+        setCanMoveTrue();
+
+    }
+
     public double getCurrentLoad(){
         return loader.getCurrentLoad();
     }
 
     private void loadCars(Car car) {
-        if(rampUp==false){
+        if(rampDown==true){
             loader.loadCars(car);
         }
 
     }
 
     private void unLoadCar() {
-        if (rampUp=false){
+        if (rampDown=true){
             loader.unLoadCar();
         }
         
     }
     private void unLoadAllCars(){
-        if (rampUp=false){
+        if (rampDown=true){
         loader.unLoadAllCars();
         }
     }
