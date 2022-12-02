@@ -1,44 +1,60 @@
 package src;
+
 import java.awt.Color;
-import java.util.*;
-import java.util.Random;
+import java.util.List;
 
-public class CarTransporter extends Truck { 
+public class CarTransporter extends Truck {
+    private CarLoader loader;
+    private Boolean rampDown;
 
-    private double maxLoad;
-    private double currentLoad;
-    private CarWorkshop loader;
-    private List<Car> loadedCars = new ArrayList<Car>();
-    Random random = new Random();
-    
-    public CarTransporter(int doors, int power, int speed, Color color, String name, int x, int y, boolean turnLeft, boolean turnRight, double angle, double maxLoad, double currentLoad) {
-        super(doors, 375, speed, color, name, x, y, turnLeft, turnRight, validAngle(angle), 1);
-        this.maxLoad = maxLoad;
-        this.currentLoad = currentLoad;
-        this.loadedCars = null;
-        this.loader=new CarWorkshop(maxLoad, currentLoad, x, y);
+    public CarTransporter(int doors, double power, double speed, Color caColor, String name, double x, double y, boolean left, boolean right, double maxLoad, double currentLoad) {
+        super(doors, power, speed, caColor, name, x, y, left, right);
+        this.loader = new CarLoader(maxLoad, currentLoad, x, y);
+        this.rampDown = false;
     }
 
-    public double getCurrentLoad(){
+    public void setrampDownTrue() {
+        if (getCurrentSpeed() == 0) {
+            this.rampDown = true;
+            setCanMoveFalse();
+        }
+    }
+
+    public void setrampDownFalse() {
+        this.rampDown = false;
+        setCanMoveTrue();
+
+    }
+
+    public double getCurrentLoad() {
         return loader.getCurrentLoad();
     }
 
-    private void loadCars(Car car) {
-        loader.loadCars(car);
+    public List getCurrentLoadedCars() {
+        return loader.getCurrentLoadedCars();
+    }
+    
+    public boolean getRampPosition(){
+        return this.rampDown;
     }
 
-    private void unLoadCar() {
-        loader.unLoadCar();
-    }
-    private void unLoadAllCars(){
-        loader.unLoadAllCars();
-    }
-
-    private static double validAngle(double angle) {
-        if ((angle != 0) || (angle != 1.0)) {
-            return 1.0;
+    public void loadCars(Car car) {
+        if (rampDown == true) {
+            loader.loadCars(car);
         }
-        return 0;
+
     }
 
+    public void unLoadCar() {
+        if (rampDown = true) {
+            loader.unLoadCar();
+        }
+
+    }
+
+    public void unLoadAllCars() {
+        if (rampDown = true) {
+            loader.unLoadAllCars();
+        }
+    }
 }
