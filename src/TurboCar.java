@@ -1,20 +1,16 @@
 package src;
 
-import java.awt.Color;
-
-public class TurboCar extends Car{
+public class TurboCar {
     private boolean turboOn;
     private double turbo;
 
-    public TurboCar(int doors, double power, double speed, Color caColor, String name, double x, double y, boolean left,
-            boolean right,double turbo) {
-        super(doors, power, speed, caColor, name, x, y, left, right);
-        this.turboOn=false;
-        this.turbo=turbo;
-        //TODO Auto-generated constructor stub
+    public TurboCar() {
+        this.turboOn = false;
+        this.turbo = 1.0;
     }
+
     public void setTurboOn() {
-        this.turboOn = true;
+        turboOn = true;
     }
 
     public void setTurboOff() {
@@ -26,16 +22,9 @@ public class TurboCar extends Car{
     }
 
     public double getTurboValue() {
-        if (turboOn){
-            return this.turbo;
-        }else{
-            return 1;
-        }
+        this.turbo = 1;
+        if (turboOn)
+            this.turbo = 1.3;
+        return this.turbo;
     }
-    double speedFactor() {
-        return getEnginePower() * 0.01 * getTurboValue();
-    }
-    
 }
-
-   

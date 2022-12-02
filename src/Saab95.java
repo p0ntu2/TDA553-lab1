@@ -3,16 +3,26 @@ import java.awt.*;
 
 public class Saab95 extends Car {
 
+    private TurboCar turboCar;
 
-
-    public Saab95(int doors, int power, int speed, Color color, String name, int x, int y, boolean turnLeft, boolean turnRight,double turbo){
+    public Saab95(int doors, int power, int speed, Color color, String name, int x, int y, boolean turnLeft, boolean turnRight) {
         super(doors, power, speed, color, name, x, y, turnLeft, turnRight);
-        new TurboCar turbo= new
-
+        this.turboCar = new TurboCar();
     }
-    double speedFactor() {
-        return getEnginePower() * 0.01 * getTurboValue();
-    }
-    
 
+    public double speedFactor() {
+        return getEnginePower() * 0.01 * turboCar.getTurboValue();
+    }
+
+    public void setTurboOn() {
+        turboCar.setTurboOn();
+    }
+
+    public void setTurboOff() {
+        turboCar.setTurboOff();
+    }
+
+    public boolean getTurboOn() {
+        return turboCar.getTurboOn();
+    }
 }
