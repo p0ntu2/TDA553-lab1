@@ -1,4 +1,5 @@
 package src;
+
 import java.awt.*;
 
 public abstract class Car implements Movable {
@@ -40,7 +41,7 @@ public abstract class Car implements Movable {
         this.currentSpeed = ammount;
     }
 
-    public String getName(){
+    public String getName() {
         return this.modelName;
     }
 
@@ -80,8 +81,8 @@ public abstract class Car implements Movable {
         this.turnRight = false;
         this.turnLeft = true;
     }
-    
-    public boolean  getTurnLeft() {
+
+    public boolean getTurnLeft() {
         return this.turnLeft;
     }
 
@@ -89,7 +90,7 @@ public abstract class Car implements Movable {
         this.turnLeft = false;
         this.turnRight = true;
     }
-    
+
     public boolean getTurnRight() {
         return this.turnRight;
     }
@@ -134,6 +135,7 @@ public abstract class Car implements Movable {
 
         }
     }
+
     private void incrementSpeed(double amount) {
         try {
             if (getCurrentSpeed() >= getEnginePower()) {

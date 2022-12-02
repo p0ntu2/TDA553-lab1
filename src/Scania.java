@@ -1,14 +1,16 @@
 package src;
+
 import java.awt.*;
 
 public class Scania extends Truck {
     private double currentAngle;
     private double maxAngle;
 
-    public Scania(int doors, int power, int speed, Color color, String name, int x, int y, boolean turnLeft, boolean turnRight, double angle,double maxAngle) {
+    public Scania(int doors, int power, int speed, Color color, String name, int x, int y, boolean turnLeft,
+            boolean turnRight, double angle, double maxAngle) {
         super(doors, 375, speed, color, name, x, y, turnLeft, turnRight);
-        this.currentAngle=angle;
-        this.maxAngle=maxAngle;
+        this.currentAngle = angle;
+        this.maxAngle = maxAngle;
     }
 
     public double getCurrentPlatformAngle() {
@@ -19,17 +21,17 @@ public class Scania extends Truck {
         return this.maxAngle;
     }
 
-    public void setAngle(double newAngle){
-        if(getCurrentSpeed()==0 & newAngleIsInsideRange(newAngle)){
+    public void setAngle(double newAngle) {
+        if (getCurrentSpeed() == 0 & newAngleIsInsideRange(newAngle)) {
             calculateNewAngle(newAngle);
             checkIfitCanMove();
         }
     }
+
     private void checkIfitCanMove() {
-        if(this.currentAngle>0){
+        if (this.currentAngle > 0) {
             setCanMoveFalse();
-        }
-        else{
+        } else {
             setCanMoveTrue();
         }
     }
@@ -41,11 +43,12 @@ public class Scania extends Truck {
         } else if (angle < 0) {
             return (this.currentAngle + angle);
 
-        } else { 
+        } else {
             return this.currentAngle;
         }
     }
+
     private boolean newAngleIsInsideRange(double newAngle) {
-        return (newAngle+this.currentAngle <= maxAngle & newAngle+this.currentAngle>=0);
+        return (newAngle + this.currentAngle <= maxAngle & newAngle + this.currentAngle >= 0);
     }
 }
