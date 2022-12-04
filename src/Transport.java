@@ -30,7 +30,7 @@ public class Transport extends Truck {
         return loader.getCurrentLoad();
     }
 
-    public List getCurrentLoadedCars() {
+    public List<Car> getCurrentLoadedCars() {
         return loader.getCurrentLoadedCars();
     }
     
