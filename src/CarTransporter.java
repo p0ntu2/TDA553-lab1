@@ -51,10 +51,4 @@ public class CarTransporter extends Truck {
         }
 
     }
-
-    public void unLoadAllCars() {
-        if (rampDown = true) {
-            loader.unLoadAllCars();
-        }
-    }
 }
