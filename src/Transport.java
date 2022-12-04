@@ -3,11 +3,11 @@ package src;
 import java.awt.Color;
 import java.util.List;
 
-public class CarTransporter extends Truck {
+public class Transport extends Truck {
     private CarLoader loader;
     private Boolean rampDown;
 
-    public CarTransporter(int doors, double power, double speed, Color caColor, String name, double x, double y, boolean left, boolean right, double maxLoad, double currentLoad) {
+    public Transport(int doors, double power, double speed, Color caColor, String name, double x, double y, boolean left, boolean right, double maxLoad, double currentLoad) {
         super(doors, power, speed, caColor, name, x, y, left, right);
         this.loader = new CarLoader(maxLoad, currentLoad, x, y);
         this.rampDown = false;

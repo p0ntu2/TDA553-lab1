@@ -53,7 +53,4 @@ public class CarLoader {
             currentCar.setY(y);
         }
     }
-    public void unLoadAllCars(){
-        this.loadedCars.forEach((Car)->unLoadCar());
-    }
 }
