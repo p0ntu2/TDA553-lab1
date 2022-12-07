@@ -29,7 +29,6 @@ public class CarLoader {
     }
 
     public void loadCars(Car car) {
-        double currentLoad = 0;
         if (currentLoad <= maxLoad) {
             if (car.getX() > this.x - 10 && car.getX() < this.x + 10 && car.getY() > this.y - 10
                     && car.getY() < this.y + 10) {
@@ -53,8 +52,5 @@ public class CarLoader {
             currentCar.setX(x);
             currentCar.setY(y);
         }
-    }
-    public void unLoadAllCars(){
-        this.loadedCars.forEach((Car)->unLoadCar());
     }
 }
