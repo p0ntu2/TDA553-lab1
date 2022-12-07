@@ -1,8 +1,7 @@
 package src;
 
-public class SpeedTrim extends Car {
-    //om bilen har en turbo speedFactore == ...
-
+public class SpeedTrimCar extends Car {
+    private 
     // annars är speedFactorn public double speedFactor() {
      //   return getEnginePower() * 0.01 * trimFactor;
 }

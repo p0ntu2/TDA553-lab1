@@ -1,12 +1,14 @@
 package src;
 import java.awt.*;
 
-public class Saab95 extends Turbo {
+public class Saab95 extends TurboCar{
     private boolean turboOn;
 
     public Saab95(int doors, int power, int speed, Color color, String name, int x, int y, boolean turnLeft, boolean turnRight){
-        super(doors, power, speed, color, name, x, y, turnLeft, turnRight);
+        //super(doors, power, speed, color, name, x, y, turnLeft, turnRight);
     }
+
+    
 
   /*  private void setTurboOn() {
         turboOn = true;
