@@ -16,13 +16,21 @@ import java.awt.event.ActionListener;
  **/
 
 public class CarView extends JFrame{
-    private static final int X = 800;
-    private static final int Y = 800;
+    private int X;
+    private int Y;
+    DrawPanel drawPanel;
+
+    public CarView(int x, int y){
+        this.X=x;
+        this.Y=y;
+        this.drawPanel= new DrawPanel(this.X, this.Y-240);
+
+    }
 
     // The controller member
     CarController carC;
 
-    DrawPanel drawPanel = new DrawPanel(X, Y-240);
+
 
     JPanel controlPanel = new JPanel();
 
@@ -52,7 +60,7 @@ public class CarView extends JFrame{
     private void initComponents(String title) {
 
         this.setTitle(title);
-        this.setPreferredSize(new Dimension(X,Y));
+        this.setPreferredSize(new Dimension(this.X,this.Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(drawPanel);

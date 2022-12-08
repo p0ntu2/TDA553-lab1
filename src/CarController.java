@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -25,24 +26,29 @@ public class CarController {
     CarView frame;
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
+    public CarController(List<Car> carlist){
+        this.cars=(ArrayList<Car>) carlist;
+
+
+    }
 
     //methods:
 
 
-    public static void main(String[] args) {
-        // Instance of this class
-        CarController cc = new CarController();
+    // public static void main(String[] args) {
+    //     // Instance of this class
 
-        cc.cars.add(new Volvo240(4, 100, 0, Color.black, "Volvo240", 0, 0, false, false));
-        cc.cars.add(new Saab95(2, 125, 0, Color.red, "Saab95", 0, 100, false, false));
-        cc.cars.add(new Scania(2, 375, 0, Color.green, "Scania", 0, 200, false, false, 70, 70));
 
-        // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc);
+    //     cc.cars.add(new Volvo240(4, 100, 0, Color.black, "Volvo240", 0, 0, false, false));
+    //     cc.cars.add(new Saab95(2, 125, 0, Color.red, "Saab95", 0, 100, false, false));
+    //     cc.cars.add(new Scania(2, 375, 0, Color.green, "Scania", 0, 200, false, false, 0, 70));
 
-        // Start the timer
-        cc.timer.start();
-    }
+    //     // Start a new view and send a reference of self
+    //     cc.frame = new CarView("CarSim 1.0", cc);
+
+    //     // Start the timer
+    //     cc.timer.start();
+    // }
 
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
@@ -65,7 +71,7 @@ public class CarController {
         double gas = ((double) amount) / 100;
         for (Car car : cars
                 ) {
-            car.gas(gas);
+            car.tryGas(gas);
         }
     }
 }
