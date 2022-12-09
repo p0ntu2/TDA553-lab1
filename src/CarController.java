@@ -1,4 +1,5 @@
 package src;
+
 import java.awt.*;
 
 import javax.swing.*;
@@ -14,52 +15,66 @@ import java.util.List;
  */
 
 public class CarController {
+    List<Car> carlist = new ArrayList<Car>();
     // member fields:
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
     private final int delay = 50;
-    // The timer is started with an listener (see below) that executes the statements
+    // The timer is started with an listener (see below) that executes the
+    // statements
     // each step between delays.
     private Timer timer = new Timer(delay, new TimerListener());
 
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Car> cars = new ArrayList<>();
-    public CarController(List<Car> carlist){
-        this.cars=(ArrayList<Car>) carlist;
+    public CarController() {
 
+        carlist.add(CarFactory.createSaab());
+        carlist.add(CarFactory.createVolvo());
+        carlist.add(CarFactory.createScania());
 
     }
 
-    //methods:
-
+    // methods:
 
     // public static void main(String[] args) {
-    //     // Instance of this class
+    // // Instance of this class
 
+    // cc.cars.add(new Volvo240(4, 100, 0, Color.black, "Volvo240", 0, 0, false,
+    // false));
+    // cc.cars.add(new Saab95(2, 125, 0, Color.red, "Saab95", 0, 100, false,
+    // false));
+    // cc.cars.add(new Scania(2, 375, 0, Color.green, "Scania", 0, 200, false,
+    // false, 0, 70));
 
-    //     cc.cars.add(new Volvo240(4, 100, 0, Color.black, "Volvo240", 0, 0, false, false));
-    //     cc.cars.add(new Saab95(2, 125, 0, Color.red, "Saab95", 0, 100, false, false));
-    //     cc.cars.add(new Scania(2, 375, 0, Color.green, "Scania", 0, 200, false, false, 0, 70));
+    // // Start a new view and send a reference of self
+    // cc.frame = new CarView("CarSim 1.0", cc);
 
-    //     // Start a new view and send a reference of self
-    //     cc.frame = new CarView("CarSim 1.0", cc);
-
-    //     // Start the timer
-    //     cc.timer.start();
+    // // Start the timer
+    // cc.timer.start();
     // }
 
-    /* Each step the TimerListener moves all the cars in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
+    /*
+     * Each step the TimerListener moves all the cars in the list and tells the
+     * view to update its images. Change this method to your needs.
+     */
+
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Car car : cars) {
+            for (Car car : carlist) {
                 car.move();
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
-                frame.drawPanel.moveit(x, y);
+                if (car instanceof Volvo240) {
+                    frame.drawPanel.movevolvo(x, y);
+                }
+                else if (car instanceof Saab95) {
+                    frame.drawPanel.movesaab(x, y);
+                }
+                else if (car instanceof Scania) {
+                    frame.drawPanel.movescania(x, y);
+                }
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
@@ -67,10 +82,9 @@ public class CarController {
     }
 
     // Calls the gas method for each car once
-    void gas(int amount) {
+    public void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Car car : cars
-                ) {
+        for (Car car : carlist) {
             car.tryGas(gas);
         }
     }

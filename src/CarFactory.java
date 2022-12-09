@@ -9,7 +9,7 @@ public class CarFactory {
     public static Car createSaab(){
         return new Saab95(2, 125, 0, Color.red, "Saab95", 0, 100, false, false);
     }
-    public Car createScanie(){
+    public static Car createScania(){
         return new Scania(2, 375, 0, Color.green, "Scania", 0, 200, false, false, 0, 70);
     }
     public static Car createtransport(){

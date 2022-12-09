@@ -16,8 +16,8 @@ import java.awt.event.ActionListener;
  **/
 
 public class CarView extends JFrame{
-    private int X;
-    private int Y;
+    private static int X;
+    private static int Y;
     DrawPanel drawPanel;
 
     // The controller member
@@ -43,19 +43,21 @@ public class CarView extends JFrame{
     JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
-    public CarView(String framename,int x, int y){
+    public CarView(String framename,int x, int y ){ //CarController cc
+        this.carC = new CarController();
+        X=x;
+        Y=y;
+        drawPanel = new DrawPanel(X, Y-240);
         initComponents(framename);
-        this.X=x;
-        this.Y=y;
-        this.drawPanel= new DrawPanel(this.X, this.Y-240);
-    }
+    
+        }
 
     // Sets everything in place and fits everything
     // TODO: Take a good look and make sure you understand how these methods and components work
     private void initComponents(String title) {
 
         this.setTitle(title);
-        this.setPreferredSize(new Dimension(this.X,this.Y));
+        this.setPreferredSize(new Dimension(X,Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(drawPanel);
@@ -109,10 +111,14 @@ public class CarView extends JFrame{
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.gas(gasAmount);
+               carC.gas(gasAmount);
             }
         });
 
+        
+            
+        
+    
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
 
