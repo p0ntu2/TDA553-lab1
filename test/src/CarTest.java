@@ -7,6 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.Test;
 
+import src.modell.Car;
+import src.modell.Saab95;
+import src.modell.Volvo240;
+
 public class CarTest {
     // Hämtar x-värdet i testVolvo som sattes till x=3 i konstruktorn
     @Test

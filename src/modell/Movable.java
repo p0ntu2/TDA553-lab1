@@ -1,4 +1,4 @@
-package src;
+package src.modell;
 public interface Movable {
     public void move();
 

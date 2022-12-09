@@ -1,5 +1,7 @@
-package src;
+package src.modell;
 import java.awt.*;
+
+import src.modell.Car;
 
 public class CarFactory {
 

@@ -1,8 +1,16 @@
-package src;
+package src.controller;
 
 import java.awt.*;
 
 import javax.swing.*;
+
+import src.modell.Car;
+import src.modell.CarFactory;
+import src.modell.Saab95;
+import src.modell.Scania;
+import src.modell.Volvo240;
+import src.view.CarView;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -67,16 +75,16 @@ public class CarController {
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
                 if (car instanceof Volvo240) {
-                    frame.drawPanel.movevolvo(x, y);
+                    frame.movevolvo(x, y);
                 }
                 else if (car instanceof Saab95) {
-                    frame.drawPanel.movesaab(x, y);
+                    frame.movesaab(x, y);
                 }
                 else if (car instanceof Scania) {
-                    frame.drawPanel.movescania(x, y);
+                    frame.movescania(x, y);
                 }
                 // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
+                //frame.drawPanel.repaint();
             }
         }
     }

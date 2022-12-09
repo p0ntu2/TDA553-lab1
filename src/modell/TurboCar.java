@@ -1,4 +1,4 @@
-package src;
+package src.modell;
 
 public class TurboCar {
     private boolean turboOn;

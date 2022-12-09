@@ -1,8 +1,11 @@
-package src;
+package src.view;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import src.controller.CarController;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,8 +52,17 @@ public class CarView extends JFrame{
         Y=y;
         drawPanel = new DrawPanel(X, Y-240);
         initComponents(framename);
-    
         }
+    public void movevolvo(int x, int y){
+        drawPanel.movevolvo(x, y);
+    }
+    public void movesaab(int x, int y){
+        drawPanel.movesaab(x, y);
+    }
+    public void movescania(int x, int y){
+        drawPanel.movescania(x, y);
+    }
+
 
     // Sets everything in place and fits everything
     // TODO: Take a good look and make sure you understand how these methods and components work

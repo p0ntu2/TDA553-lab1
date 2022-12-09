@@ -1,4 +1,4 @@
-package src;
+package src.modell;
 
 public class Workshop extends CarLoader {
     private double x;
