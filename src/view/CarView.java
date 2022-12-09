@@ -28,22 +28,22 @@ public class CarView extends JFrame{
 
 
 
-    JPanel controlPanel = new JPanel();
+    // JPanel controlPanel = new JPanel();
 
-    JPanel gasPanel = new JPanel();
-    JSpinner gasSpinner = new JSpinner();
-    int gasAmount = 0;
-    JLabel gasLabel = new JLabel("Amount of gas");
+    // JPanel gasPanel = new JPanel();
+    // JSpinner gasSpinner = new JSpinner();
+    // int gasAmount = 0;
+    // JLabel gasLabel = new JLabel("Amount of gas");
 
-    JButton gasButton = new JButton("Gas");
-    JButton brakeButton = new JButton("Brake");
-    JButton turboOnButton = new JButton("Saab Turbo on");
-    JButton turboOffButton = new JButton("Saab Turbo off");
-    JButton liftBedButton = new JButton("Scania Lift Bed");
-    JButton lowerBedButton = new JButton("Lower Lift Bed");
+    // JButton gasButton = new JButton("Gas");
+    // JButton brakeButton = new JButton("Brake");
+    // JButton turboOnButton = new JButton("Saab Turbo on");
+    // JButton turboOffButton = new JButton("Saab Turbo off");
+    // JButton liftBedButton = new JButton("Scania Lift Bed");
+    // JButton lowerBedButton = new JButton("Lower Lift Bed");
 
-    JButton startButton = new JButton("Start all cars");
-    JButton stopButton = new JButton("Stop all cars");
+    // JButton startButton = new JButton("Start all cars");
+    // JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
     public CarView(String framename,int x, int y ){ //CarController cc
@@ -53,6 +53,8 @@ public class CarView extends JFrame{
         drawPanel = new DrawPanel(X, Y-240);
         initComponents(framename);
         }
+
+
     public void movevolvo(int x, int y){
         drawPanel.movevolvo(x, y);
     }
