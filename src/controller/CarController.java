@@ -1,7 +1,15 @@
-package src;
+package src.controller;
 
 import java.awt.*;
 import javax.swing.*;
+
+import src.model.Car;
+import src.model.CarModel;
+import src.model.Saab95;
+import src.model.Scania;
+import src.model.Volvo240;
+import src.view.CarView;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -26,13 +34,9 @@ public class CarController {
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
 
+    private CarModel model;
+
     //methods:
-
-    public void listenForInput() {
-
-    }
-
-
 
     public static void main(String[] args) {
         // Instance of this class
@@ -58,29 +62,7 @@ public class CarController {
     * */
      private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Car car : cars) {
-                car.move();
-                int x = (int) Math.round(car.getX());
-                int y = (int) Math.round(car.getY());
-                
-                if (car == cars.get(0)) {
-                    frame.moveVolvo(x, y);
-                } else if (car == cars.get(1)) {
-                    frame.moveSaab(x, y);
-                } else if (car == cars.get(2)) {
-                    frame.moveScania(x, y);
-                }
-                // repaint() calls the paintComponent method of the panel
-                frame.repaint();
-            }
+            model.gasPressed(cars);
         }
-    }
 
-    // Calls the gas method for each car once
-    void gas(int amount) {
-        double gas = ((double) amount) / 100;
-        for (Car car : cars) {
-            car.tryGas(gas);
-        }
-    } 
 }

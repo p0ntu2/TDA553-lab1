@@ -1,4 +1,4 @@
-package src;
+package src.view;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -32,6 +32,10 @@ public class DrawPanel extends JPanel{
         scaniaPoint.x = x;
         scaniaPoint.y = y+200;
     } */
+
+    void moveCar() {
+        
+    }
 
     void moveVolvo(int x, int y) {
         volvoPoint.x = x;

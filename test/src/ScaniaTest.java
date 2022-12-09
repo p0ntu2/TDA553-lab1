@@ -2,6 +2,8 @@ package src;
 
 import org.junit.Test;
 
+import src.model.Scania;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.awt.*;

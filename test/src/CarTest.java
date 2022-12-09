@@ -7,6 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.Test;
 
+import src.model.Car;
+import src.model.Saab95;
+import src.model.Volvo240;
+
 public class CarTest {
     // Hämtar x-värdet i testVolvo som sattes till x=3 i konstruktorn
     @Test
@@ -54,7 +58,7 @@ public class CarTest {
 
     // Ändrar hastigheten till 4 sedan rör sig bilen, listan borde bli [3.0, 11.0]
     @Test
-    public void after_move_x_should_not_change_and_y_should_be_10_85() {
+    public void after_move_y_should_not_change_and_x_should_be_7() {
         Car testVolvo = new Volvo240(4, 100, 4, Color.black, "Volvo240", 3, 7, false, false);
         testVolvo.move();
         ArrayList<Double> testList = new ArrayList<>();
@@ -62,8 +66,8 @@ public class CarTest {
         testList.add(testVolvo.getY());
         
         ArrayList<Double> trueList = new ArrayList<>();
-        trueList.add(3.0); 
-        trueList.add(11.0);
+        trueList.add(7.0); 
+        trueList.add(7.0);
 
         assertEquals(trueList, testList);
     }

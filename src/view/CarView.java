@@ -1,11 +1,16 @@
-package src;
+package src.view;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import src.controller.CarController;
+import src.model.Car;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
@@ -21,6 +26,7 @@ public class CarView extends JFrame{
 
     // The controller member
     CarController carC;
+    List<Car> cars;
 
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
@@ -42,8 +48,9 @@ public class CarView extends JFrame{
     JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
-    public CarView(String framename, CarController cc){
+    public CarView(String framename, CarController cc, List<Car> cars){
         this.carC = cc;
+        this.cars = cars;
         initComponents(framename);
     }
 
@@ -99,7 +106,7 @@ public class CarView extends JFrame{
         stopButton.setPreferredSize(new Dimension(X/5-15,200));
         this.add(stopButton);
 
-        // This actionListener is for the gas button only
+       // This actionListener is for the gas button only
         // TODO: Create more for each component as necessary
         gasButton.addActionListener(new ActionListener() {
             @Override
@@ -107,7 +114,6 @@ public class CarView extends JFrame{
                 carC.gas(gasAmount);
             }
         });
-
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
 
@@ -121,24 +127,24 @@ public class CarView extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    void moveCar(Car car, double x, double y) {
+    public void moveCar(Car car, double x, double y) {
         car.setX(x);
         car.setY(y);
     } 
 
-    void moveVolvo(int x, int y) {
+    public void moveVolvo(int x, int y) {
         drawPanel.moveVolvo(x, y);
     }
 
-    void moveSaab(int x, int y) {
+    public void moveSaab(int x, int y) {
         drawPanel.moveSaab(x, y);
     }
 
-    void moveScania(int x, int y) {
+    public void moveScania(int x, int y) {
         drawPanel.moveScania(x, y);
     }
 
-    void repain() {
+    public void repaint() {
         drawPanel.repaint();
     }
 }

@@ -10,6 +10,11 @@ import java.util.List;
 
 import org.junit.Test;
 
+import src.model.Car;
+import src.model.Scania;
+import src.model.Transport;
+import src.model.Volvo240;
+
 public class TransportTest {
     
     @Test

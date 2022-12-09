@@ -1,4 +1,4 @@
-package src;
+package src.model;
 import java.awt.*;
 import java.util.List;
 
@@ -108,7 +108,7 @@ public abstract class Car implements Movable {
         gas(amount);
     }
 
-    public void gas(double amount) {
+    private void gas(double amount) {
         try {
             if ((amount < 0 || amount > 1)) {
                 throw new IllegalArgumentException();
