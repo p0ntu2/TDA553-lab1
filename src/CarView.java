@@ -57,8 +57,6 @@ public class CarView extends JFrame{
 
         this.add(drawPanel);
 
-
-
         SpinnerModel spinnerModel =
                 new SpinnerNumberModel(0, //initial value
                         0, //min
@@ -121,5 +119,26 @@ public class CarView extends JFrame{
         this.setVisible(true);
         // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    void moveCar(Car car, double x, double y) {
+        car.setX(x);
+        car.setY(y);
+    } 
+
+    void moveVolvo(int x, int y) {
+        drawPanel.moveVolvo(x, y);
+    }
+
+    void moveSaab(int x, int y) {
+        drawPanel.moveSaab(x, y);
+    }
+
+    void moveScania(int x, int y) {
+        drawPanel.moveScania(x, y);
+    }
+
+    void repain() {
+        drawPanel.repaint();
     }
 }

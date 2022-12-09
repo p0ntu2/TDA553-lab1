@@ -23,7 +23,7 @@ public class DrawPanel extends JPanel{
     Point scaniaPoint = new Point();
 
     // TODO: Make this genereal for all cars
-    void moveit(int x, int y){
+/*     void moveit(int x, int y){
     
         volvoPoint.x = x;
         volvoPoint.y = y;
@@ -31,6 +31,21 @@ public class DrawPanel extends JPanel{
         saabPoint.y = y+100;
         scaniaPoint.x = x;
         scaniaPoint.y = y+200;
+    } */
+
+    void moveVolvo(int x, int y) {
+        volvoPoint.x = x;
+        volvoPoint.y = y;
+    }
+
+    void moveSaab(int x, int y) {
+        saabPoint.x = x;
+        saabPoint.y = y;
+    }
+
+    void moveScania(int x, int y) {
+        scaniaPoint.x = x;
+        scaniaPoint.y = y;
     }
 
     // Initializes the panel and reads the images

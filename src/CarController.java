@@ -28,13 +28,19 @@ public class CarController {
 
     //methods:
 
+    public void listenForInput() {
+
+    }
+
+
+
     public static void main(String[] args) {
         // Instance of this class
         CarController cc = new CarController();
 
         Volvo240 volvo = new Volvo240(4, 100, 0, Color.black, "Volvo240", 0, 0, false, false); 
-        Saab95 saab = new Saab95(2, 125, 0, Color.red, "Saab95", 0, 0, false, false);
-        Scania scania = new Scania(2, 375, 0, Color.yellow, "Scania", 0, 0, false, false, 0, 70);
+        Saab95 saab = new Saab95(2, 125, 0, Color.red, "Saab95", 0, 100, false, false);
+        Scania scania = new Scania(2, 375, 0, Color.yellow, "Scania", 0, 200, false, false, 0, 70);
 
         cc.cars.add(volvo);
         cc.cars.add(saab);
@@ -50,15 +56,22 @@ public class CarController {
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
     * */
-    private class TimerListener implements ActionListener {
+     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Car car : cars) {
                 car.move();
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
-                frame.drawPanel.moveit(x, y);
+                
+                if (car == cars.get(0)) {
+                    frame.moveVolvo(x, y);
+                } else if (car == cars.get(1)) {
+                    frame.moveSaab(x, y);
+                } else if (car == cars.get(2)) {
+                    frame.moveScania(x, y);
+                }
                 // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
+                frame.repaint();
             }
         }
     }
@@ -69,5 +82,5 @@ public class CarController {
         for (Car car : cars) {
             car.tryGas(gas);
         }
-    }
+    } 
 }
