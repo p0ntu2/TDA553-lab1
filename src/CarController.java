@@ -67,7 +67,7 @@ public class CarController {
     void gas(int amount) {
         double gas = ((double) amount) / 100;
         for (Car car : cars) {
-            car.gas(gas);
+            car.tryGas(gas);
         }
     }
 }

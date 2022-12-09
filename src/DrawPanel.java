@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.lang.ProcessBuilder.Redirect.Type;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -22,6 +24,7 @@ public class DrawPanel extends JPanel{
 
     // TODO: Make this genereal for all cars
     void moveit(int x, int y){
+    
         volvoPoint.x = x;
         volvoPoint.y = y;
         saabPoint.x = x;

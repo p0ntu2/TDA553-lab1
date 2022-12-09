@@ -28,15 +28,16 @@ public class Truck extends Car {
         return getEnginePower() * 0.01;
     }
 
+    @Override
     public void tryGas(double amount) {
         try {
             if (canMove) {
                 gas(amount);
             } else {
-                throw new Exception();
+                throw new IllegalArgumentException();
             }
 
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             System.out.println("truck cannot move");
         }
 
