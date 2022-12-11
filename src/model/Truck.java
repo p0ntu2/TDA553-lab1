@@ -32,7 +32,7 @@ public class Truck extends Car {
     public void tryGas(double amount) {
         try {
             if (canMove) {
-                gas(amount);
+                tryGas(amount);
             } else {
                 throw new IllegalArgumentException();
             }

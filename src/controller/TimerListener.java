@@ -15,7 +15,6 @@ public class TimerListener implements ActionListener {
 
     // public TimerListener(List<Car> list){
     //     carlist=list;
-    }
     public void actionPerformed(ActionEvent e) {
         for (Car car : carlist) {
             car.move();
@@ -34,5 +33,5 @@ public class TimerListener implements ActionListener {
             frame.repaint();
         }
     }
-    
+
 }

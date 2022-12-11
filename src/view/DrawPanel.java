@@ -2,10 +2,7 @@ package src.view;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.lang.ProcessBuilder.Redirect.Type;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -15,42 +12,28 @@ public class DrawPanel extends JPanel{
 
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
-    BufferedImage saabImage;
     BufferedImage scaniaImage;
+    BufferedImage saabImage;
+
     // To keep track of a singel cars position
     Point volvoPoint = new Point();
     Point saabPoint = new Point();
     Point scaniaPoint = new Point();
 
     // TODO: Make this genereal for all cars
-/*     void moveit(int x, int y){
-    
+    public void moveVolvo(int x, int y){
         volvoPoint.x = x;
         volvoPoint.y = y;
-        saabPoint.x = x;
-        saabPoint.y = y+100;
+    }
+    public void moveScania(int x, int y){
         scaniaPoint.x = x;
-        scaniaPoint.y = y+200;
-    } */
-
-    void moveCar() {
-        
+        scaniaPoint.y = y;
     }
-
-    void moveVolvo(int x, int y) {
-        volvoPoint.x = x;
-        volvoPoint.y = y;
-    }
-
-    void moveSaab(int x, int y) {
+    public void moveSaab(int x, int y){
         saabPoint.x = x;
         saabPoint.y = y;
     }
 
-    void moveScania(int x, int y) {
-        scaniaPoint.x = x;
-        scaniaPoint.y = y;
-    }
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
@@ -67,7 +50,7 @@ public class DrawPanel extends JPanel{
             // if you are starting in IntelliJ.
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
             saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
-            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
+            scaniaImage=ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
         } catch (IOException ex)
         {
             ex.printStackTrace();
@@ -83,5 +66,7 @@ public class DrawPanel extends JPanel{
         g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
         g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
         g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);
+
+
     }
 }
