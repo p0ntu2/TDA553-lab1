@@ -4,11 +4,18 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import src.modell.Car;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Init extends JFrame{
+    List<Car> carlist = new ArrayList<Car>();
+    int X,Y;
+    String title;
     JPanel controlPanel = new JPanel();
 
     JPanel gasPanel = new JPanel();
@@ -26,15 +33,16 @@ public class Init extends JFrame{
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
-    public Init(){
+    public Init(List<Car> cList,String frametitle,int x, int y ){
+        carlist=cList;
+        X=x;
+        Y=y;
+        title=frametitle;
+        initComponents(title, X, Y);
         
     }
-        private void initComponents(String title) {
+        private void initComponents(String title,int x, int y ) {
 
-
-    
-    
-    
             SpinnerModel spinnerModel =
                     new SpinnerNumberModel(0, //initial value
                             0, //min
