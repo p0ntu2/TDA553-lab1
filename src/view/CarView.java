@@ -13,8 +13,8 @@ import java.awt.*;
  **/
 
 public class CarView extends JFrame{
-    private static int x;
-    private static int y;
+    private int x;
+    private int y;
     DrawPanel drawPanel;
 
     // The controller member
@@ -46,16 +46,18 @@ public class CarView extends JFrame{
         this.drawPanel = new DrawPanel(this.x, this.y-240);
         initComponents(framename);
         }
-        private void initComponents(String title){
+
+
+    private void initComponents(String title){
         this.setTitle(title);
         this.setPreferredSize(new Dimension(x,y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(drawPanel);
 
-    // Sets everything in place and fits everything
-    // TODO: Take a good look and make sure you understand how these methods and components work
-   
+        // Sets everything in place and fits everything
+        // TODO: Take a good look and make sure you understand how these methods and components work
+
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
 
@@ -67,7 +69,7 @@ public class CarView extends JFrame{
         this.setVisible(true);
         // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
+}
 
     public void moveVolvo(int x, int y) {
         drawPanel.moveVolvo(x, y);

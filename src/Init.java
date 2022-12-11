@@ -35,10 +35,7 @@ public class Init extends JFrame{
 
     public Init(List<Car> cList,String frametitle,int x, int y ){
         carlist=cList;
-        X=x;
-        Y=y;
-        title=frametitle;
-        initComponents(title, X, Y);
+        initComponents(frametitle, x, y);
         
     }
     private void initComponents(String title,int x, int y ) {

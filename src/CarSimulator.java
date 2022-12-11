@@ -41,7 +41,7 @@ public class CarSimulator {
         model.addCar(CarFactory.createScaniaCar());
         
 
-        init = new Init(model.getCarList(),"name", 0, 0);
+        init = new Init(model.getCarList(),"name", 800, 800);
         CarView view = new CarView("Simulator", 800, 800);
 
     }
