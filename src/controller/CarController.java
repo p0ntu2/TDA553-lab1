@@ -1,64 +1,64 @@
-package src.controller;
+// package src.controller;
 
-import java.awt.*;
+// import java.awt.*;
 
-import javax.swing.*;
+// import javax.swing.*;
 
-import src.modell.Car;
-import src.modell.CarFactory;
-import src.modell.Saab95;
-import src.modell.Scania;
-import src.modell.Volvo240;
-import src.view.CarView;
-
-
-import java.util.ArrayList;
-import java.util.List;
-
-/*
-* This class represents the Controller part in the MVC pattern.
-* It's responsibilities is to listen to the View and responds in a appropriate manner by
-* modifying the model state and the updating the view.
- */
-
-public class CarController {
-    List<Car> carlist = new ArrayList<Car>();
-    CarView view;
-    // member fields:
-
-    // The delay (ms) corresponds to 20 updates a sec (hz)
-    private final int delay = 50;
-    // The timer is started with an listener (see below) that executes the
-    // statements
-    // each step between delays.
-    public Timer timer = new Timer(delay, new TimerListener());
-
-    // The frame that represents this instance View of the MVC pattern
-    // A list of cars, modify if needed
-    public CarController() {
-        view = new CarView("name",800,800);
-        carlist.add(CarFactory.createSaab());
-        carlist.add(CarFactory.createVolvo());
-        carlist.add(CarFactory.createScania());
+// import src.modell.Car;
+// import src.modell.CarFactory;
+// import src.modell.Saab95;
+// import src.modell.Scania;
+// import src.modell.Volvo240;
+// import src.view.CarView;
 
 
-    }
+// import java.util.ArrayList;
+// import java.util.List;
 
-    // methods:
+// /*
+// * This class represents the Controller part in the MVC pattern.
+// * It's responsibilities is to listen to the View and responds in a appropriate manner by
+// * modifying the model state and the updating the view.
+//  */
+
+// public class CarController {
+//     List<Car> carlist = new ArrayList<Car>();
+//     CarView view;
+//     // member fields:
+
+//     // The delay (ms) corresponds to 20 updates a sec (hz)
+//     private final int delay = 50;
+//     // The timer is started with an listener (see below) that executes the
+//     // statements
+//     // each step between delays.
+//     public Timer timer = new Timer(delay, new TimerListener());
+
+//     // The frame that represents this instance View of the MVC pattern
+//     // A list of cars, modify if needed
+//     public CarController() {
+//         view = new CarView("name",800,800);
+//         carlist.add(CarFactory.createSaab());
+//         carlist.add(CarFactory.createVolvo());
+//         carlist.add(CarFactory.createScania());
 
 
-    /*
-     * Each step the TimerListener moves all the cars in the list and tells the
-     * view to update its images. Change this method to your needs.
-     */
+//     }
+
+//     // methods:
+
+
+//     /*
+//      * Each step the TimerListener moves all the cars in the list and tells the
+//      * view to update its images. Change this method to your needs.
+//      */
 
   
 
-    // Calls the gas method for each car once
-    public void gas(int amount) {
-        double gas = ((double) amount) / 100;
-        for (Car car : carlist) {
-            car.tryGas(gas);
-        }
-    }
-}
+//     // Calls the gas method for each car once
+//     public void gas(int amount) {
+//         double gas = ((double) amount) / 100;
+//         for (Car car : carlist) {
+//             car.tryGas(gas);
+//         }
+//     }
+// }
