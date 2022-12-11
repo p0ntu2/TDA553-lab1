@@ -1,36 +1,37 @@
 package src;
 
-import java.util.List;
+import javax.swing.*;
 
-import javax.swing.text.SimpleAttributeSet;
+
+import java.lang.ModuleLayer.Controller;
+import java.net.http.WebSocket.Listener;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
 
 import src.controller.CarController;
 import src.model.Car;
-import src.model.CarModel;
+import src.model.CarFactory;
 import src.view.CarView;
+import src.controller.TimerListener;
 
 public class CarSimulator {
+    static List<Car> carlist = new ArrayList<Car>();
+    // private static Timer timer;
+    private final int delay = 50;
+    private Timer timer = new Timer(delay, new TimerListener());
+    static Init init;
+    static TimerListener listener;
 
+    public static void main(String[] args) {
+        carlist.add(CarFactory.createSaabCar());
+        carlist.add(CarFactory.createVolvoCar());
+        carlist.add(CarFactory.createScaniaCar());
+        // listener=new TimerListener(carlist);
+        // timer = new Timer(50,listener);
 
-  public void update() {
-    
-  }
+        init = new Init(carlist, "name", 0, 0);
 
+    }
 
-
-
-
-
-
-
-  public static void main(String[] args) {
-    List<Car> cars;
-    CarModel model = new CarModel();
-    CarController controller = new CarController();
-    cars = model.getCarList();
-    CarView view = new CarView("CarSimulator", controller, cars);
-
-    CarSimulator simulator = new CarSimulator();
-    simulator.update();
-  }
 }

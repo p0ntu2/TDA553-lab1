@@ -39,7 +39,7 @@ public class CarModel {
     }
 
     public void update() {
-        controller.listenForInput();
+        
 
     }
 

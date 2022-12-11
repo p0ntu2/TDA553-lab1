@@ -1,15 +1,4 @@
-package src.controller;
-
-import java.awt.*;
 import javax.swing.*;
-
-import src.model.Car;
-import src.model.CarModel;
-import src.model.Saab95;
-import src.model.Scania;
-import src.model.Volvo240;
-import src.view.CarView;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -20,7 +9,7 @@ import java.util.ArrayList;
 * modifying the model state and the updating the view.
  */
 
-public class CarController extends JPanel{
+public class CarController {
     // member fields:
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
@@ -32,11 +21,10 @@ public class CarController extends JPanel{
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Car> cars = new ArrayList<>();
-
-    private CarModel model;
+    ArrayList<ACar> cars = new ArrayList<>();
 
     //methods:
+
 
     public static void main(String[] args) {
         // Instance of this class
@@ -51,7 +39,7 @@ public class CarController extends JPanel{
         cc.cars.add(scania);
 
         // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc, cars);
+        cc.frame = new CarView("CarSim 1.0", cc);
 
         // Start the timer
         cc.timer.start();
@@ -60,10 +48,25 @@ public class CarController extends JPanel{
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
     * */
-     private class TimerListener implements ActionListener {
+    private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            model.gasPressed(cars);
+            for (Car car : cars) {
+                car.move();
+                int x = (int) Math.round(car.getPosition().getX());
+                int y = (int) Math.round(car.getPosition().getY());
+                frame.drawPanel.moveit(x, y);
+                // repaint() calls the paintComponent method of the panel
+                frame.drawPanel.repaint();
+            }
         }
+    }
 
+    // Calls the gas method for each car once
+    void gas(int amount) {
+        double gas = ((double) amount) / 100;
+        for (Car car : cars) {
+            car.gas(gas);
+        }
     }
 }
+
