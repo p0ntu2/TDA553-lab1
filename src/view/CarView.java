@@ -13,8 +13,8 @@ import java.awt.*;
  **/
 
 public class CarView extends JFrame{
-    private static int X;
-    private static int Y;
+    private static int x;
+    private static int y;
     DrawPanel drawPanel;
 
     // The controller member
@@ -41,14 +41,14 @@ public class CarView extends JFrame{
     // Constructor
     public CarView(String framename,int x, int y ){ //CarController cc
         //this.carC = new CarController();
-        X=x;
-        Y=y;
-        drawPanel = new DrawPanel(X, Y-240);
+        this.x = x;
+        this.y = y;
+        this.drawPanel = new DrawPanel(this.x, this.y-240);
         initComponents(framename);
         }
         private void initComponents(String title){
         this.setTitle(title);
-        this.setPreferredSize(new Dimension(X,Y));
+        this.setPreferredSize(new Dimension(x,y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(drawPanel);

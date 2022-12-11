@@ -39,9 +39,6 @@ public class CarController {
     // A list of cars, modify if needed
     public CarController() {
         view = new CarView("name",800,800);
-        carlist.add(CarFactory.createVolvoCar());
-        carlist.add(CarFactory.createSaabCar());
-        carlist.add(CarFactory.createScaniaCar());
 
 
     }

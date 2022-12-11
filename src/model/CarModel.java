@@ -1,27 +1,16 @@
 package src.model;
 
-import java.awt.*;
-import javax.swing.*;
-
 import src.view.CarView;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
 import java.util.List;
-import java.util.Timer;
 
 public class CarModel {
     
     private CarView view;
     private List<Car> cars;
 
-    public CarModel() {
+    public CarModel(List<Car> cars) {
         this.cars = cars;
-        addCar(CarFactory.createVolvoCar());
-        addCar(CarFactory.createSaabCar());
-        addCar(CarFactory.createScaniaCar());
     }
 
     public List<Car> getCarList() {
