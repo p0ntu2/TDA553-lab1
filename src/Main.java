@@ -3,8 +3,8 @@ package src;
 import java.util.ArrayList;
 import java.util.List;
 import src.controller.CarController;
-import src.modell.Car;
-import src.modell.CarFactory;;
+import src.model.Car;
+import src.model.CarFactory;;
 
 public class Main {
     static List<Car> carlist = new ArrayList<Car>();
