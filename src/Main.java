@@ -1,23 +1,14 @@
 package src;
 
-import javax.swing.*;
-
-
-import java.lang.ModuleLayer.Controller;
-import java.net.http.WebSocket.Listener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-
 import src.controller.Init;
 import src.modell.Car;
-import src.modell.CarFactory;
-import src.modell.TimerListener;;
+import src.modell.CarFactory;;
 
 public class Main {
     static List<Car> carlist = new ArrayList<Car>();
     // private static Timer timer;
-    private final int delay = 50;
     //private Timer timer = new Timer(delay, new TimerListener());
     static Init init;
 
