@@ -9,6 +9,7 @@ import src.modell.CarFactory;;
 public class Main {
     static List<Car> carlist = new ArrayList<Car>();
     // private static Timer timer;
+    private final static int delay = 50;
     //private Timer timer = new Timer(delay, new TimerListener());
     static Init init;
 
@@ -20,7 +21,7 @@ public class Main {
         // listener=new TimerListener(carlist);
         // timer = new Timer(50,listener);
 
-        init = new Init(carlist, "name", 800, 800);
+        init = new Init(carlist, "name", 800, 800, delay);
 
 
 

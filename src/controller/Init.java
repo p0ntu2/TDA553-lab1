@@ -37,13 +37,13 @@ public class Init extends JFrame {
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
-    public Init(List<Car> cList, String frametitle, int x, int y) {
+    public Init(List<Car> cList, String frametitle, int x, int y, int delay) {
         carlist = cList;
         X = x;
         Y = y;
         drawPanel = new DrawPanel(X, Y - 240);
         title = frametitle;
-        timer = new Timer(50, new TimerListener(carlist));
+        timer = new Timer(delay, new TimerListener(carlist));
         timer.start();
 
         initComponents(title, X, Y);
