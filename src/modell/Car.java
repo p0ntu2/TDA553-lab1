@@ -102,11 +102,7 @@ public abstract class Car implements Movable {
             x += currentSpeed;
         }
     }
-
-    public void tryGas(double ammount){
-        gas(ammount);
-    }
-
+    
     public void gas(double amount) {
         try {
             if ((amount <= 0 || amount >= 1)) {

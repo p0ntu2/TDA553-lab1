@@ -29,10 +29,10 @@ public class Truck extends Car {
     }
 
     @Override 
-    public void tryGas(double amount) {
+    public void gas(double amount) {
         try {
             if (this.canMove) {
-                gas(amount);
+                super.gas(amount);
             } else {
                 throw new Exception();
             }

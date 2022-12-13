@@ -118,7 +118,7 @@ public class CarController extends JFrame {
     public void gas(int amount) {
         double gas = ((double) amount) / 100;
         for (Car car : carlist) {
-            car.tryGas(gas);
+            car.gas(gas);
         }
     }
 
