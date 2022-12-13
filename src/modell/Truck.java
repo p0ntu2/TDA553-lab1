@@ -3,13 +3,13 @@ package src.modell;
 import java.awt.*;
 
 public class Truck extends Car {
-    private boolean canMove=true;
+    private boolean canMove;
 
     // Om man kan välja vinkel på platformen
     public Truck(int doors, double power, double speed, Color color, String name, double x, double y, boolean turnLeft,
             boolean turnRight) {
         super(doors, 375, speed, color, name, x, y, turnLeft, turnRight);
-        this.canMove = true;
+        this.canMove = false;
     }
 
     public boolean getCanMove() {
@@ -31,7 +31,7 @@ public class Truck extends Car {
     @Override 
     public void gas(double amount) {
         try {
-            if (this.canMove) {
+            if (canMove==true) {
                 super.gas(amount);
             } else {
                 throw new Exception();
