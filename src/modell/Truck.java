@@ -9,7 +9,7 @@ public class Truck extends Car {
     public Truck(int doors, double power, double speed, Color color, String name, double x, double y, boolean turnLeft,
             boolean turnRight) {
         super(doors, 375, speed, color, name, x, y, turnLeft, turnRight);
-        this.canMove = false;
+        this.canMove = true;
     }
 
     public boolean getCanMove() {

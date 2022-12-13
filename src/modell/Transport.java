@@ -44,7 +44,7 @@ public class Transport extends Truck {
         }
 
     }
-
+    
     public void unLoadCar() {
         if (rampDown = true) {
             loader.unLoadCar();
