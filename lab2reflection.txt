@@ -1,0 +1,32 @@
+Lab 2 reflection:
+1)	 The contract for gas is: “If you are allowed to move, give me the value (between 0 and 1) that you want to increment the speed with, and I will increment it with that amount. Otherwise I will give
+you an exception". The contract for brake is: "Give me the value (between 0 and 1) that you want to decrement the speed with, and I will decrement it with that amount. Otherwise I
+will trow an exception". Volvo and Saab both share the implementation of gas and just sends the value that should be applied in gas/brake, this does not brake the contract even if the 
+value given is outside the range, since it will throw an exception and does not alter the values in any way. Subclasses of truck also follow this contract. In their case they have a condition on if
+they can move and if it is fulfilled they can then gas. 
+
+Scania also follows the contract of both of them but it has an additional condition for gas since it is not allowed to move when its platform is raised. This is accomplished 
+by an extra method called tryGas in Scania's superclass Truck (which is a subclass of Car). The method checks if the platform is raised or not and if it is lowered it will 
+not allow the truck to gas. So, Scania still follows the contract since it just sends the value to gas but only if it meets the conditions to send in said value. Therefore, 
+all objects of the subclasses still behave as if they were objects of superclasses, and we are thus following Liskovs Substitution Principle. 
+ 
+
+2)	We handled the code duplication between Scania and the transport by implementing a subclass of Car called Truck and making the two of them subclasses of that. 
+The only direct shared ability between the two is the speed factor and that they cannot move under certain conditions. The Truck class handles that by blocking the Gas 
+method if the object should not be allowed to move. So for the Scania truck it checks the angle of the platform and then sets a Boolean in Truck to true if the angle is
+0 (when the platform is raised and allowed to move) and false if it has any other angle. The transport does a similar check, however it does not have the concept of an angle.
+It only knows if the platform is currently raised of lowered, and therefore sets the boolean based on if its ramp is up or down.
+
+The methods for loading cars that are shared between the transporters and workshops are handled by implementing a new class called Carloader that holds all the relevant methods. 
+We then made the workshop a subclass of the Carloader class since it only needed its methods. Since the transporter has a conceptual "is a" relationship with truck, we made
+it a subclass of truck, and used delegation to let transporter use the methods from Carloader via a Carloader object that is created in the constructor of transporter.
+
+
+3)	We did not alter the design from lab 1 much to implement the changes for lab 2 but we did realize that our first design was flawed in some ways so we improved upon it. 
+We noticed that our initial design did not make it easy to create multiple turbo/trim cars or cars with both turbo and trim. It did not completely violate the Open-closed 
+principle since you wouldn’t have needed to change the pre-existing code to add a new car with for example turbo. It would however have led to a lot of duplicated code, and later on
+if we wanted to change something in turbo we would have needed to make the same cahnges to all turbo cars. We therefore made two new classes TurboCar and TrimCar that shares all 
+code that all trimmed and trubo cars need, then we use delegation in Volvo and Saab to access those methods since they are subclasses of Car.
+
+We would not have needed to make these changes in order to implement Scania, Transporter or Workshop but, we thought that in the future, we might want to add more cars with
+turbo and/or trim and it also made the code more readable and easiser to expand.
