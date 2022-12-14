@@ -4,10 +4,11 @@ you an exception". The contract for brake is: "Give me the value (between 0 and 
 will trow an exception". Volvo and Saab both share the implementation of gas and just sends the value that should be applied in gas/brake, this does not brake the contract even if the 
 value given is outside the range, since it will throw an exception and does not alter the values in any way. 
 
-Scania also follows the contract of both of them but it has an additional condition for gas since it is not allowed to move when its platform is raised. This is accomplished 
-by an extra method called tryGas in Scania's superclass Truck (which is a subclass of Car). The method checks if the platform is raised or not and if it is lowered it will 
-not allow the truck to gas. So, Scania still follows the contract since it just sends the value to gas but only if it meets the conditions to send in said value. Therefore, 
-all objects of the subclasses still behave as if they were objects of superclasses, and we are thus following Liskovs Substitution Principle. 
+Scania and Transporter are both subclasses of Truck which is a subclass of Car. However, the gas() method from Car is overridden in Truck since they need to check if the platform
+is in the correct position. In the gas() method in Truck we call the super.gas() method in Car if the inital platform check is passed. The contract for Scania and Transporter is:
+"Give me the value (between 0 and 1) that you want to increment the speed with. I will check if you are able to drive (have your platform in the correct position) and if true,
+I will pass on your value to super.gas()". Scania still follows the contract since it just sends the value to gas in Car, but only if it meets the conditions to send in said value. 
+Therefore, all objects of the subclasses still behave as if they were objects of superclasses, and we are thus following Liskovs Substitution Principle. 
  
 
 2)	We handled the code duplication between Scania and the transport by implementing a subclass of Car called Truck and making the two of them subclasses of that. 
