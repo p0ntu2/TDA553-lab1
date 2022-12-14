@@ -28,10 +28,11 @@ public class Truck extends Car {
         return getEnginePower() * 0.01;
     }
 
-    public void tryGas(double amount) {
+    @Override
+    public void gas(double amount) {
         try {
             if (canMove) {
-                gas(amount);
+                super.gas(amount);
             } else {
                 throw new Exception();
             }

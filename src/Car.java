@@ -1,4 +1,5 @@
 package src;
+
 import java.awt.*;
 
 public abstract class Car implements Movable {
@@ -36,7 +37,7 @@ public abstract class Car implements Movable {
         return this.currentSpeed;
     }
 
-    public String getName(){
+    public String getName() {
         return this.modelName;
     }
 
@@ -89,7 +90,7 @@ public abstract class Car implements Movable {
     public boolean getTurnRight() {
         return this.turnRight;
     }
- 
+
     public void move() {
         if (turnLeft == true) {
             x += -currentSpeed;
@@ -106,12 +107,12 @@ public abstract class Car implements Movable {
     public void gas(double amount) {
         try {
             if ((amount <= 0 || amount >= 1)) {
-                throw new Exception();
+                throw new IllegalArgumentException();
             } else {
                 incrementSpeed(amount);
             }
 
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             System.out.println("impossible amount");
         }
     }
@@ -119,12 +120,12 @@ public abstract class Car implements Movable {
     public void brake(double amount) {
         try {
             if (amount <= 0 || amount >= 1) {
-                throw new Exception();
+                throw new IllegalArgumentException();
             } else {
                 decrementSpeed(amount);
 
             }
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             System.out.println("impossible amount");
 
         }
@@ -159,5 +160,5 @@ public abstract class Car implements Movable {
     }
 
     abstract double speedFactor();
-    // abstract boolean cannotGas(double amount);
+    //abstract boolean canGas();
 }
