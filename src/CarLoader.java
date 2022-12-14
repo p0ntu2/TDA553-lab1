@@ -29,10 +29,11 @@ public class CarLoader {
     }
 
     public void loadCars(Car car) {
-        if (currentLoad < maxLoad) {
-            if (car.getX() > this.x - 10 && car.getX() < this.x + 10 && car.getY() > this.y - 10
-                    && car.getY() < this.y + 10) {
+        if (this.currentLoad < this.maxLoad) {
+            if ( ( (car.getX() > this.x - 10) && (car.getX() < this.x + 10) ) && ( (car.getY() > this.y - 10)
+                    && (car.getY() < this.y + 10) ) ) {
                 this.loadedCars.add(car);
+                this.currentLoad += 1;
             }
         }
     }
