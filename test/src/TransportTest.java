@@ -13,7 +13,7 @@ import org.junit.Test;
 public class TransportTest {
     
     @Test
-    public void shouldReturnTrue() {
+    public void rampCanBeDown() {
         Transport transportTest = new Transport(2, 375, 0, Color.green, "Transport", 0, 0, false, false, 0, 0);
         transportTest.setrampDownTrue();
         assertTrue(transportTest.getRampPosition());
@@ -21,9 +21,25 @@ public class TransportTest {
     }
 
     @Test
-    public void shouldReturnFalse() {
+    public void rampShouldBeUpByDefault() {
         Transport transportTest = new Transport(2, 375, 0, Color.green, "Transport", 0, 0, false, false, 0, 0);
         assertFalse(transportTest.getRampPosition());
+    }
+
+    @Test
+    public void cannotMoveWhileRampDown() {
+        Transport transportTest = new Transport(2, 375, 0, Color.green, "Transport", 0, 0, false, false, 0, 0);
+        transportTest.setrampDownTrue();
+        transportTest.gas(0.5);
+        assertEquals(0, transportTest.getCurrentSpeed());
+    }
+
+    @Test
+    public void canMoveWhenRampUp() {
+        Transport transportTest = new Transport(2, 375, 0, Color.green, "Transport", 0, 0, false, false, 0, 0);
+        transportTest.gas(0.5);
+        assertEquals(1.875, transportTest.getCurrentSpeed());
+
     }
 
     @Test
