@@ -2,7 +2,8 @@ Lab 2 reflection:
 1)	 The contract for gas is: “If you are allowed to move, give me the value (between 0 and 1) that you want to increment the speed with, and I will increment it with that amount. Otherwise I will give
 you an exception". The contract for brake is: "Give me the value (between 0 and 1) that you want to decrement the speed with, and I will decrement it with that amount. Otherwise I
 will trow an exception". Volvo and Saab both share the implementation of gas and just sends the value that should be applied in gas/brake, this does not brake the contract even if the 
-value given is outside the range, since it will throw an exception and does not alter the values in any way. Subclasses of Truck also follow this contract. The only difference is that they have a condition that check if they can move ,and if this condition is fulfilled they can gas. 
+value given is outside the range, since it will throw an exception and does not alter the values in any way. Subclasses of Truck also follow this contract. The only difference is 
+that they have a condition that check if they can move ,and if this condition is fulfilled they can gas. 
  
 
 2)	We handled the code duplication between Scania and the transport by implementing a subclass of Car called Truck and making the two of them subclasses of that. 
