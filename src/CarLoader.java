@@ -52,6 +52,7 @@ public class CarLoader {
             }
             currentCar.setX(x);
             currentCar.setY(y);
+            this.currentLoad -= 1;
         }
     }
 }
