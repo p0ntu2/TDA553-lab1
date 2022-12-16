@@ -44,12 +44,8 @@ public class CarLoader {
         if (this.loadedCars.size() != 0) {
             Car currentCar = this.loadedCars.get(this.loadedCars.size() - 1);
             this.loadedCars.remove(this.loadedCars.size() - 1);
-            while(x<=0){
-                x=random.nextDouble(this.x + 10)+(this.x - 10);
-            }
-            while(y<=0){
-                y=random.nextDouble(this.y + 10)+(this.y - 10);
-            }
+            y=this.y+10;
+            x=this.x+10;
             currentCar.setX(x);
             currentCar.setY(y);
             this.currentLoad -= 1;
